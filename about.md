@@ -4,6 +4,12 @@ title: About
 permalink: /about/
 ---
 
+
+### #00 Base
+
+1. [Ruby on Rails](http://rubyonrails.org/)
+2. [Wikipedia: Ruby on Rails](https://es.wikipedia.org/wiki/Ruby_on_Rails)
+
 ### #01 Tutorials
 
 1. [Tutor de Ruby on Rails](http://hackerdude.com/courses/rails/)
