@@ -13,13 +13,17 @@ Un **Framework** escrit en **Ruby** per a crear aplicacions web. Està disenyat 
 
 Un **Framework** és una sèrie d'utilitats, és un marc de treball, amb propòsit general. Altres **Framwork** JQuery.
 
-**Ruby** és un llenguatge de programació formtament orientat a objectes.
+Un **framework**, entrono de treball o marc de treball és un conjunt estandaritzat de conceptes, pràctiques i criteris per a enfocar un tipus de problemàtica particular que serveix com a referència, per a enfrontar i resoldre nous problemes d'índole similar. [Wikipedia](https://es.wikipedia.org/wiki/Framework)
+
+**Ruby** és un llenguatge de programació formtament orientat a objectes. [Wikipedia](https://es.wikipedia.org/wiki/Ruby)
 
 Està dissenyat per programar aplicacions web de forma àgil.
 
 Està construit sobre **convencions**, no sobre configuracions.
 
 ORM **activerecords**, permet treballar amb bases de dades.
+
+Ryby on Rails és un framework d'aplicacions web de codi obert escrit en el llenguatge de programació Ruby, seguint el paradigma del patró Model Vista Controlador (MVC). Trata de combinar la simplicitat amb la possibilitat de desenvolupar aplicacions del món real escrivint menys codi que els altres frameworks i amb un mínim de configuració. El llenguatge de programació Ruby permet la metaprogramació de la qual Rails fa ús, elq ue resulta en una sintaxi que molts dels seus usuaris troben molt llegible. Rails es distribueix amb RubyGems,q ue és el format oficial de paquet i canal de distribució de biblioteques i aplicacions Ruby. [Wikipedia](https://es.wikipedia.org/wiki/Ruby_on_Rails)
 
 ### 3. Per què escollir Ruby on Rails sobre altre programari?
 

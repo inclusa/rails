@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+### #01 Tutorials
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+1. [Tutor de Ruby on Rails](http://hackerdude.com/courses/rails/)
+2. [Tutorial més tècnic](http://gastonramos.com.ar/rails21/)
+3. [Ruby on Rails para programadores que tienen cosas importantes que hacer](http://yottabi.com/mld.pdf)
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+### #02 Videotutorials
+
+1. [Santiago Ponce](http://santipm.com/blog/curso-de-ruby-on-rails-gratis/)
+
