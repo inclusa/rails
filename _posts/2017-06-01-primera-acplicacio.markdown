@@ -53,7 +53,16 @@ localhost:3000/welcome/index
 
 Així que, la sintaxi que segueix és el nom del controlador i nom de l'arxiu.
 
-Podem canviar la pàgina de benvinguda a l'arxiu `config/inicials/routes.rb` en la línia on posa `get 'welcome/index'. Deixarem la línia `get` com està i canviarem la línia `root` per redirigir-la on volem.
+Podem canviar la pàgina de benvinguda a l'arxiu `config/routes.rb` en la línia on posa `get 'welcome/index'. Deixarem la línia `get` com està i canviarem la línia `root` per redirigir-la on volem.
+
+```ruby
+Rails.application.routes.draw do
+  get 'welcome/index'
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
+```
+
 
 Font: [CodigoFacilito Rails4](http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_primer_aplicacion)
 
