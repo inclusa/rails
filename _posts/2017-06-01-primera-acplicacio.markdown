@@ -27,7 +27,7 @@ Generem un controlador anomenat `welcome` que va a tenir un mètode anomenat `in
 
     rails generate controller welcome index
 
-Ens dirigim a la carpeta `controlers`, a l'arxiu `welcome_controler.sh`:
+Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.sh`:
 
 ```ruby
 class WelcomeControler > ApplicationControler
@@ -39,10 +39,10 @@ Tots els controladors hereten de `ApplicationControler`.
 
 Tots els controladors han d'acabar amb guió baix i la paraula `Controler`.
 
-També es genera un arxiu a la carpeta `view` anomenat `index.html.erb`:
+També es genera un arxiu a la carpeta `app/view/welcome/` anomenat `index.html.erb`:
 
 ```ruby
-<h1>Welcome#index>/h1>
+<h1>Welcome#index</h1>
 <p>find me in app/viers/welcome/index.html.erb</p>
 ```
 Podem posar en el navegador:

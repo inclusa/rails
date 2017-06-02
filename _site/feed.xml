@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-06-02T05:23:54+02:00</updated><id>http://localhost:4000/</id><title type="html">Ruby on Rails</title><subtitle>Entorn d'aprenentatge que prenten deixar constància dels aprenentatges i avanços en aquest framework
+</subtitle><entry><title type="html">02 Primera aplicacio</title><link href="http://localhost:4000/2017/06/01/primera-acplicacio.html" rel="alternate" type="text/html" title="02 Primera aplicacio" /><published>2017-06-01T05:51:00+02:00</published><updated>2017-06-01T05:51:00+02:00</updated><id>http://localhost:4000/2017/06/01/primera-acplicacio</id><content type="html" xml:base="http://localhost:4000/2017/06/01/primera-acplicacio.html">&lt;p&gt;Rails bé amb un grup important de generadors de codi.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails new blog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Crea diferents arxius i instal·la gemes necessàries.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Arranca un server que porta el mateix framework.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;localhost:3000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Tancar el server&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Ctrl + c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Generem un controlador anomenat &lt;code class=&quot;highlighter-rouge&quot;&gt;welcome&lt;/code&gt; que va a tenir un mètode anomenat &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate controller welcome index
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ens dirigim a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;controlers&lt;/code&gt;, a l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;welcome_controler.sh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WelcomeControler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationControler&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Tots els controladors hereten de &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplicationControler&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tots els controladors han d’acabar amb guió baix i la paraula &lt;code class=&quot;highlighter-rouge&quot;&gt;Controler&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;També es genera un arxiu a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; anomenat &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html.erb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Welcome&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#index&amp;gt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;erb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/p&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Podem posar en el navegador:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Així que, la sintaxi que segueix és el nom del controlador i nom de l’arxiu.&lt;/p&gt;
+
+&lt;p&gt;Podem canviar la pàgina de benvinguda a l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;config/inicials/routes.rb&lt;/code&gt; en la línia on posa &lt;code class=&quot;highlighter-rouge&quot;&gt;get 'welcome/index'. Deixarem la línia &lt;/code&gt;get&lt;code class=&quot;highlighter-rouge&quot;&gt; com està i canviarem la línia &lt;/code&gt;root` per redirigir-la on volem.&lt;/p&gt;
+
+&lt;p&gt;Font: &lt;a href=&quot;http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_primer_aplicacion&quot;&gt;CodigoFacilito Rails4&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Rails bé amb un grup important de generadors de codi.</summary></entry><entry><title type="html">01 Presentació</title><link href="http://localhost:4000/2017/05/29/presentacio.html" rel="alternate" type="text/html" title="01 Presentació" /><published>2017-05-29T02:00:00+02:00</published><updated>2017-05-29T02:00:00+02:00</updated><id>http://localhost:4000/2017/05/29/presentacio</id><content type="html" xml:base="http://localhost:4000/2017/05/29/presentacio.html">&lt;h3 id=&quot;1-què-és-ruby-on-rails&quot;&gt;1. Què és Ruby on Rails?&lt;/h3&gt;
+
+&lt;p&gt;Un &lt;strong&gt;Framework&lt;/strong&gt; escrit en &lt;strong&gt;Ruby&lt;/strong&gt; per a crear aplicacions web. Està disenyat per a programar aplicacions web de manera més sencilla i &lt;strong&gt;àgil&lt;/strong&gt;, &lt;strong&gt;asumint&lt;/strong&gt; el que cada desenvolupador necessita per iniciar.&lt;/p&gt;
+
+&lt;p&gt;Un &lt;strong&gt;Framework&lt;/strong&gt; és una sèrie d’utilitats, és un marc de treball, amb propòsit general. Altres &lt;strong&gt;Framwork&lt;/strong&gt; JQuery.&lt;/p&gt;
+
+&lt;p&gt;Un &lt;strong&gt;framework&lt;/strong&gt;, entrono de treball o marc de treball és un conjunt estandaritzat de conceptes, pràctiques i criteris per a enfocar un tipus de problemàtica particular que serveix com a referència, per a enfrontar i resoldre nous problemes d’índole similar. &lt;a href=&quot;https://es.wikipedia.org/wiki/Framework&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ruby&lt;/strong&gt; és un llenguatge de programació formtament orientat a objectes. &lt;a href=&quot;https://es.wikipedia.org/wiki/Ruby&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Està dissenyat per programar aplicacions web de forma àgil.&lt;/p&gt;
+
+&lt;p&gt;Està construit sobre &lt;strong&gt;convencions&lt;/strong&gt;, no sobre configuracions.&lt;/p&gt;
+
+&lt;p&gt;ORM &lt;strong&gt;activerecords&lt;/strong&gt;, permet treballar amb bases de dades.&lt;/p&gt;
+
+&lt;p&gt;Ryby on Rails és un framework d’aplicacions web de codi obert escrit en el llenguatge de programació Ruby, seguint el paradigma del patró Model Vista Controlador (MVC). Trata de combinar la simplicitat amb la possibilitat de desenvolupar aplicacions del món real escrivint menys codi que els altres frameworks i amb un mínim de configuració. El llenguatge de programació Ruby permet la metaprogramació de la qual Rails fa ús, elq ue resulta en una sintaxi que molts dels seus usuaris troben molt llegible. Rails es distribueix amb RubyGems,q ue és el format oficial de paquet i canal de distribució de biblioteques i aplicacions Ruby. &lt;a href=&quot;https://es.wikipedia.org/wiki/Ruby_on_Rails&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-per-què-escollir-ruby-on-rails-sobre-altre-programari&quot;&gt;3. Per què escollir Ruby on Rails sobre altre programari?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Està escrit en Ruby. Ruby és un llenguatge dissenyat per fer feliç al programador, orientat a objectes.&lt;/li&gt;
+  &lt;li&gt;SASS, CoffeScript, HAML, etc. són natius en Rails.&lt;/li&gt;
+  &lt;li&gt;ActiveRecord (res d’SQL). Interface mitjançant la qual ens comuniquem amb la base de dades.&lt;/li&gt;
+  &lt;li&gt;Usa MVC, Model-Vista-Controlador (promou bones pràctiques de desenvolupament).&lt;/li&gt;
+  &lt;li&gt;Comunitat forta.&lt;/li&gt;
+  &lt;li&gt;És un framework probat.&lt;/li&gt;
+  &lt;li&gt;Moltes startups usan Rails.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-qui-usa--han-usat-rails&quot;&gt;3. Qui usa / han usat Rails?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GitHub&lt;/li&gt;
+  &lt;li&gt;Twitter&lt;/li&gt;
+  &lt;li&gt;Airbn&lt;/li&gt;
+  &lt;li&gt;Twitch&lt;/li&gt;
+  &lt;li&gt;Código Facilito :3&lt;/li&gt;
+  &lt;li&gt;Basecamp ../&lt;/li&gt;
+  &lt;li&gt;Indiegogo&lt;/li&gt;
+  &lt;li&gt;SoundCloud&lt;/li&gt;
+  &lt;li&gt;Bleacher Report&lt;/li&gt;
+  &lt;li&gt;Square&lt;/li&gt;
+  &lt;li&gt;Hulu&lt;/li&gt;
+  &lt;li&gt;SlideShare&lt;/li&gt;
+  &lt;li&gt;ThemeForest&lt;/li&gt;
+  &lt;li&gt;BrainTree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Font &lt;a href=&quot;http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_introduccion&quot;&gt;Código Facilito&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">1. Què és Ruby on Rails?</summary></entry></feed>
