@@ -1,5 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-06-02T05:23:54+02:00</updated><id>http://localhost:4000/</id><title type="html">Ruby on Rails</title><subtitle>Entorn d'aprenentatge que prenten deixar constància dels aprenentatges i avanços en aquest framework
-</subtitle><entry><title type="html">02 Primera aplicacio</title><link href="http://localhost:4000/2017/06/01/primera-acplicacio.html" rel="alternate" type="text/html" title="02 Primera aplicacio" /><published>2017-06-01T05:51:00+02:00</published><updated>2017-06-01T05:51:00+02:00</updated><id>http://localhost:4000/2017/06/01/primera-acplicacio</id><content type="html" xml:base="http://localhost:4000/2017/06/01/primera-acplicacio.html">&lt;p&gt;Rails bé amb un grup important de generadors de codi.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-06-03T23:06:43+02:00</updated><id>http://localhost:4000/</id><title type="html">Ruby on Rails</title><subtitle>Entorn d'aprenentatge que prenten deixar constància dels aprenentatges i avanços en aquest framework
+</subtitle><entry><title type="html">04 Models</title><link href="http://localhost:4000/2017/06/03/models.html" rel="alternate" type="text/html" title="04 Models" /><published>2017-06-03T05:29:00+02:00</published><updated>2017-06-03T05:29:00+02:00</updated><id>http://localhost:4000/2017/06/03/models</id><content type="html" xml:base="http://localhost:4000/2017/06/03/models.html">&lt;p&gt;Anem a utilitzar el primer generador de Ruby on Rails&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate model Article title:strings body:text visit_count:integer 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  Running via Spring preloader in process 25314
+  invoke  active_record
+  create    db/migrate/20170603024931_create_articles.rb
+  create    app/models/article.rb
+  invoke    test_unit
+  create      test/models/article_test.rb
+  create      test/fixtures/articles.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Els generadors es criden amb el nom &lt;code class=&quot;highlighter-rouge&quot;&gt;generate&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;nom_del_model_en_singular&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hi ha diferents tipus de generadors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Controler&lt;/li&gt;
+  &lt;li&gt;Model&lt;/li&gt;
+  &lt;li&gt;Migration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rails espera que el &lt;strong&gt;nom del model&lt;/strong&gt; es declare en sigular i generarà una &lt;strong&gt;tabla&lt;/strong&gt; amb el mateix model, però en &lt;strong&gt;plural&lt;/strong&gt;. Així, si anomenem al model &lt;code class=&quot;highlighter-rouge&quot;&gt;Article&lt;/code&gt;, la tabla s’anomenarà &lt;code class=&quot;highlighter-rouge&quot;&gt;Articles&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cal utilitzar noms en anglés, perquè Rails utilitzarà la paraula en anglés.&lt;/p&gt;
+
+&lt;p&gt;Després de generador anem a indicar els &lt;strong&gt;camps&lt;/strong&gt; de la taula. Amb dos punts separarem el tipus de dades en la base de dades. Quan creem una taula hem d’especificar el tipus de dada que es va a guardar en eixe camp.&lt;/p&gt;
+
+&lt;p&gt;Per defecte, Rails, va a especificar el &lt;code class=&quot;highlighter-rouge&quot;&gt;var_char&lt;/code&gt;, això vol dir que si no especifiquem, doncs ell va a intentar endevinar què és, és a dir si escrivim &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; ens posarà com a tipus de dada &lt;code class=&quot;highlighter-rouge&quot;&gt;string&lt;/code&gt;, per defecte serà una cadena.&lt;/p&gt;
+
+&lt;p&gt;El segon camp &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt; l’especifiquem com &lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt;, ja que va a ser una cadena molt llarga.&lt;/p&gt;
+
+&lt;p&gt;Els camps es poden escriure en l’idioma que desitgem, però la tabla és millor que la escrivim en anglés.&lt;/p&gt;
+
+&lt;p&gt;S’ha creat un arxiu anomenat &lt;code class=&quot;highlighter-rouge&quot;&gt;Article&lt;/code&gt; dins del directori &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;No vàrem d’haver especificat a Rails:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tabla =&amp;gt; articles&lt;/li&gt;
+  &lt;li&gt;Camps =&amp;gt; article.title() =&amp;gt; ‘Títol de l’artícle’&lt;/li&gt;
+  &lt;li&gt;Escriure mètodes&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Anem a utilitzar el primer generador de Ruby on Rails</summary></entry><entry><title type="html">03 erb i assets</title><link href="http://localhost:4000/2017/06/02/erb-i-assets.html" rel="alternate" type="text/html" title="03 erb i assets" /><published>2017-06-02T21:27:00+02:00</published><updated>2017-06-02T21:27:00+02:00</updated><id>http://localhost:4000/2017/06/02/erb-i-assets</id><content type="html" xml:base="http://localhost:4000/2017/06/02/erb-i-assets.html">&lt;p&gt;Partim de l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/welcome/index.html.erb&lt;/code&gt; on hem direccionat l’inici de Rails.&lt;/p&gt;
+
+&lt;p&gt;El nom de l’arxiu és &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html.erb&lt;/code&gt; amb aquesta extensió &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt;, la qual l’ha colocat Rails per defecte.&lt;/p&gt;
+
+&lt;p&gt;El que ofereix aquesta extensió és accés a Ruby dins de la vista, &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;etiquetes&quot;&gt;Etiquetes&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%  %&amp;gt;&lt;/code&gt; aquesta serveix per a imprimir coses.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%=  %&amp;gt;&lt;/code&gt; aquesta avalua el codi i l’imprimeix dins de la pàgina web.&lt;/p&gt;
+
+&lt;p&gt;Exemple:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;% [1,2,3,4].each &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%&amp;gt;
+    &amp;lt;p&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ú&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;mero: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= number%&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;%end%&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Número: 1
+
+Número: 2
+
+Número: 3
+
+Número: 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Això seria com un cicle &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; en altres llenguatges.&lt;/p&gt;
+
+&lt;p&gt;Si ara incorporem un &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt; al principi de la llista:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= [1,2,3,4].each do |number| %&amp;gt;
+    &amp;lt;p&amp;gt;Número: &amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;%&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Número: 1
+
+Número: 2
+
+Número: 3
+
+Número: 4
+
+[1, 2, 3, 4] 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;No sols imprimeix la les iteracions sinó també la llista.&lt;/p&gt;
+
+&lt;p&gt;A més podem fer altres operacions:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= [1,2,3,4].each do |number| %&amp;gt;
+    &amp;lt;p&amp;gt;Número: &amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/p&amp;gt;
+&amp;lt;%end%&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Número: 2
+
+Número: 4
+
+Número: 6
+
+Número: 8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ací podem posar tot el que siga vàlid en Ruby.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= [1,2,3,4].each do |number| %&amp;gt;
+    &amp;lt;p&amp;gt;Número: &amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/p&amp;gt;
+&amp;lt;%end%&amp;gt;
+&amp;lt;% mundo = &quot;Uriel&quot; %&amp;gt;
+&amp;lt;%= &quot;Hola &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mundo&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;&quot; %&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Número: 2
+
+Número: 4
+
+Número: 6
+
+Número: 8
+
+Hola Uriel 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Tots els recursos van a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets&lt;/code&gt;. En la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets&lt;/code&gt; cal posar tots els arxius d’estils necessaris.&lt;/p&gt;
+
+&lt;p&gt;Ruby col·loca dins l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;applications.css&lt;/code&gt; una sentència anomenada &lt;code class=&quot;highlighter-rouge&quot;&gt;require_tree&lt;/code&gt;, la qual va a afegir totes les fulles d’estil que trobe a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;stylesheets&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Per això anem la web http://flexboxgrid.com/ i baixem aquest full d’estils. El guardem a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/&lt;/code&gt; amb el nom &lt;code class=&quot;highlighter-rouge&quot;&gt;flexboxgrid.css&lt;/code&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Partim de l’arxiu app/views/welcome/index.html.erb on hem direccionat l’inici de Rails.</summary></entry><entry><title type="html">02 Primera aplicacio</title><link href="http://localhost:4000/2017/06/01/primera-acplicacio.html" rel="alternate" type="text/html" title="02 Primera aplicacio" /><published>2017-06-01T05:51:00+02:00</published><updated>2017-06-01T05:51:00+02:00</updated><id>http://localhost:4000/2017/06/01/primera-acplicacio</id><content type="html" xml:base="http://localhost:4000/2017/06/01/primera-acplicacio.html">&lt;p&gt;Rails bé amb un grup important de generadors de codi.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails new blog
 &lt;/code&gt;&lt;/pre&gt;
@@ -29,7 +182,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Ens dirigim a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;controlers&lt;/code&gt;, a l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;welcome_controler.sh&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Ens dirigim a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controlers/&lt;/code&gt;, a l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;welcome_controler.sh&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WelcomeControler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationControler&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;
@@ -41,9 +194,9 @@
 
 &lt;p&gt;Tots els controladors han d’acabar amb guió baix i la paraula &lt;code class=&quot;highlighter-rouge&quot;&gt;Controler&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;També es genera un arxiu a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; anomenat &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html.erb&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;També es genera un arxiu a la carpeta &lt;code class=&quot;highlighter-rouge&quot;&gt;app/view/welcome/&lt;/code&gt; anomenat &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html.erb&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Welcome&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#index&amp;gt;/h1&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Welcome&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#index&amp;lt;/h1&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;erb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/p&amp;gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -55,7 +208,15 @@
 
 &lt;p&gt;Així que, la sintaxi que segueix és el nom del controlador i nom de l’arxiu.&lt;/p&gt;
 
-&lt;p&gt;Podem canviar la pàgina de benvinguda a l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;config/inicials/routes.rb&lt;/code&gt; en la línia on posa &lt;code class=&quot;highlighter-rouge&quot;&gt;get 'welcome/index'. Deixarem la línia &lt;/code&gt;get&lt;code class=&quot;highlighter-rouge&quot;&gt; com està i canviarem la línia &lt;/code&gt;root` per redirigir-la on volem.&lt;/p&gt;
+&lt;p&gt;Podem canviar la pàgina de benvinguda a l’arxiu &lt;code class=&quot;highlighter-rouge&quot;&gt;config/routes.rb&lt;/code&gt; en la línia on posa &lt;code class=&quot;highlighter-rouge&quot;&gt;get 'welcome/index'. Deixarem la línia &lt;/code&gt;get&lt;code class=&quot;highlighter-rouge&quot;&gt; com està i canviarem la línia &lt;/code&gt;root` per redirigir-la on volem.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'welcome/index'&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Font: &lt;a href=&quot;http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_primer_aplicacion&quot;&gt;CodigoFacilito Rails4&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Rails bé amb un grup important de generadors de codi.</summary></entry><entry><title type="html">01 Presentació</title><link href="http://localhost:4000/2017/05/29/presentacio.html" rel="alternate" type="text/html" title="01 Presentació" /><published>2017-05-29T02:00:00+02:00</published><updated>2017-05-29T02:00:00+02:00</updated><id>http://localhost:4000/2017/05/29/presentacio</id><content type="html" xml:base="http://localhost:4000/2017/05/29/presentacio.html">&lt;h3 id=&quot;1-què-és-ruby-on-rails&quot;&gt;1. Què és Ruby on Rails?&lt;/h3&gt;
 

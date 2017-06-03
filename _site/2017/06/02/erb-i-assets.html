@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>02 Primera aplicacio</title>
-  <meta name="description" content="Rails bé amb un grup important de generadors de codi.">
+  <title>03 erb i assets</title>
+  <meta name="description" content="Partim de l’arxiu app/views/welcome/index.html.erb on hem direccionat l’inici de Rails.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/2017/06/01/primera-acplicacio.html">
+  <link rel="canonical" href="http://localhost:4000/2017/06/02/erb-i-assets.html">
   <link rel="alternate" type="application/rss+xml" title="Ruby on Rails" href="/feed.xml">
   
   
@@ -67,83 +67,122 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">02 Primera aplicacio</h1>
+    <h1 class="post-title" itemprop="name headline">03 erb i assets</h1>
     <p class="post-meta">
-      <time datetime="2017-06-01T05:51:00+02:00" itemprop="datePublished">
+      <time datetime="2017-06-02T21:27:00+02:00" itemprop="datePublished">
         
-        Jun 1, 2017
+        Jun 2, 2017
       </time>
       </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Rails bé amb un grup important de generadors de codi.</p>
+    <p>Partim de l’arxiu <code class="highlighter-rouge">app/views/welcome/index.html.erb</code> on hem direccionat l’inici de Rails.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails new blog
-</code></pre>
-</div>
+<p>El nom de l’arxiu és <code class="highlighter-rouge">index.html.erb</code> amb aquesta extensió <code class="highlighter-rouge">.erb</code>, la qual l’ha colocat Rails per defecte.</p>
 
-<p>Crea diferents arxius i instal·la gemes necessàries.</p>
+<p>El que ofereix aquesta extensió és accés a Ruby dins de la vista, <code class="highlighter-rouge">view</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails server
-</code></pre>
-</div>
+<h3 id="etiquetes">Etiquetes</h3>
 
-<p>Arranca un server que porta el mateix framework.</p>
+<p><code class="highlighter-rouge">&lt;%  %&gt;</code> aquesta serveix per a imprimir coses.
+<code class="highlighter-rouge">&lt;%=  %&gt;</code> aquesta avalua el codi i l’imprimeix dins de la pàgina web.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>localhost:3000
-</code></pre>
-</div>
+<p>Exemple:</p>
 
-<p>Tancar el server</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Ctrl + c
-</code></pre>
-</div>
-
-<p>Generem un controlador anomenat <code class="highlighter-rouge">welcome</code> que va a tenir un mètode anomenat <code class="highlighter-rouge">index</code>.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>rails generate controller welcome index
-</code></pre>
-</div>
-
-<p>Ens dirigim a la carpeta <code class="highlighter-rouge">app/controlers/</code>, a l’arxiu <code class="highlighter-rouge">welcome_controler.sh</code>:</p>
-
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">WelcomeControler</span> <span class="o">&gt;</span> <span class="no">ApplicationControler</span>
-  <span class="k">def</span> <span class="nf">index</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div>
-<p>Tots els controladors hereten de <code class="highlighter-rouge">ApplicationControler</code>.</p>
-
-<p>Tots els controladors han d’acabar amb guió baix i la paraula <code class="highlighter-rouge">Controler</code>.</p>
-
-<p>També es genera un arxiu a la carpeta <code class="highlighter-rouge">app/view/welcome/</code> anomenat <code class="highlighter-rouge">index.html.erb</code>:</p>
-
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Welcome</span><span class="c1">#index&lt;/h1&gt;</span>
-<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">find</span> <span class="n">me</span> <span class="k">in</span> <span class="n">app</span><span class="o">/</span><span class="n">viers</span><span class="o">/</span><span class="n">welcome</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">erb</span><span class="o">&lt;</span><span class="sr">/p&gt;
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">% [1,2,3,4].each </span><span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span> <span class="sx">%&gt;
+    &lt;p&gt;</span><span class="no">N</span><span class="err">ú</span><span class="ss">mero: </span><span class="o">&lt;</span><span class="sx">%= number%&gt;&lt;/p&gt;
+&lt;%end%&gt;
 </span></code></pre>
 </div>
-<p>Podem posar en el navegador:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">localhost</span><span class="p">:</span><span class="mi">3000</span><span class="o">/</span><span class="n">welcome</span><span class="o">/</span><span class="n">index</span>
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 1
+
+Número: 2
+
+Número: 3
+
+Número: 4
 </code></pre>
 </div>
 
-<p>Així que, la sintaxi que segueix és el nom del controlador i nom de l’arxiu.</p>
+<p>Això seria com un cicle <code class="highlighter-rouge">for</code> en altres llenguatges.</p>
 
-<p>Podem canviar la pàgina de benvinguda a l’arxiu <code class="highlighter-rouge">config/routes.rb</code> en la línia on posa <code class="highlighter-rouge">get 'welcome/index'. Deixarem la línia </code>get<code class="highlighter-rouge"> com està i canviarem la línia </code>root` per redirigir-la on volem.</p>
+<p>Si ara incorporem un <code class="highlighter-rouge">=</code> al principi de la llista:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
-  <span class="n">get</span> <span class="s1">'welcome/index'</span>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= [1,2,3,4].each do |number| %&gt;
+    &lt;p&gt;Número: &lt;%=</span> <span class="n">number</span><span class="sx">%&gt;&lt;/p&gt;</span>
+<span class="o">&lt;%</span><span class="k">end</span><span class="sx">%&gt;
+</span></code></pre>
+</div>
 
-  <span class="c1"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span>
-<span class="k">end</span>
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 1
+
+Número: 2
+
+Número: 3
+
+Número: 4
+
+[1, 2, 3, 4] 
 </code></pre>
 </div>
 
-<p>Font: <a href="http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_primer_aplicacion">CodigoFacilito Rails4</a></p>
+<p>No sols imprimeix la les iteracions sinó també la llista.</p>
+
+<p>A més podem fer altres operacions:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= [1,2,3,4].each do |number| %&gt;
+    &lt;p&gt;Número: &lt;%=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">%&gt;&lt;</span><span class="sr">/p&gt;
+&lt;%end%&gt;
+</span></code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 2
+
+Número: 4
+
+Número: 6
+
+Número: 8
+</code></pre>
+</div>
+
+<p>Ací podem posar tot el que siga vàlid en Ruby.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= [1,2,3,4].each do |number| %&gt;
+    &lt;p&gt;Número: &lt;%=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">%&gt;&lt;</span><span class="sr">/p&gt;
+&lt;%end%&gt;
+&lt;% mundo = "Uriel" %&gt;
+&lt;%= "Hola </span><span class="si">#{</span><span class="n">mundo</span><span class="si">}</span><span class="sr">" %&gt;
+</span></code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 2
+
+Número: 4
+
+Número: 6
+
+Número: 8
+
+Hola Uriel 
+</code></pre>
+</div>
+
+<p>Tots els recursos van a la carpeta <code class="highlighter-rouge">app/assets</code>. En la carpeta <code class="highlighter-rouge">app/assets/stylesheets</code> cal posar tots els arxius d’estils necessaris.</p>
+
+<p>Ruby col·loca dins l’arxiu <code class="highlighter-rouge">applications.css</code> una sentència anomenada <code class="highlighter-rouge">require_tree</code>, la qual va a afegir totes les fulles d’estil que trobe a la carpeta <code class="highlighter-rouge">stylesheets</code>.</p>
+
+<p>Per això anem la web http://flexboxgrid.com/ i baixem aquest full d’estils. El guardem a la carpeta <code class="highlighter-rouge">app/assets/stylesheets/</code> amb el nom <code class="highlighter-rouge">flexboxgrid.css</code>.</p>
 
 
   </div>

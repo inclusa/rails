@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>02 Primera aplicacio</title>
-  <meta name="description" content="Rails bé amb un grup important de generadors de codi.">
+  <title>04 Models</title>
+  <meta name="description" content="Anem a utilitzar el primer generador de Ruby on Rails">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/2017/06/01/primera-acplicacio.html">
+  <link rel="canonical" href="http://localhost:4000/2017/06/03/models.html">
   <link rel="alternate" type="application/rss+xml" title="Ruby on Rails" href="/feed.xml">
   
   
@@ -67,83 +67,65 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">02 Primera aplicacio</h1>
+    <h1 class="post-title" itemprop="name headline">04 Models</h1>
     <p class="post-meta">
-      <time datetime="2017-06-01T05:51:00+02:00" itemprop="datePublished">
+      <time datetime="2017-06-03T05:29:00+02:00" itemprop="datePublished">
         
-        Jun 1, 2017
+        Jun 3, 2017
       </time>
       </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Rails bé amb un grup important de generadors de codi.</p>
+    <p>Anem a utilitzar el primer generador de Ruby on Rails</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails new blog
+<div class="highlighter-rouge"><pre class="highlight"><code>rails generate model Article title:strings body:text visit_count:integer 
 </code></pre>
 </div>
 
-<p>Crea diferents arxius i instal·la gemes necessàries.</p>
+<p>Output</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails server
+<div class="highlighter-rouge"><pre class="highlight"><code>  Running via Spring preloader in process 25314
+  invoke  active_record
+  create    db/migrate/20170603024931_create_articles.rb
+  create    app/models/article.rb
+  invoke    test_unit
+  create      test/models/article_test.rb
+  create      test/fixtures/articles.yml
 </code></pre>
 </div>
 
-<p>Arranca un server que porta el mateix framework.</p>
+<p>Els generadors es criden amb el nom <code class="highlighter-rouge">generate</code> + <code class="highlighter-rouge">nom_del_model_en_singular</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>localhost:3000
-</code></pre>
-</div>
+<p>Hi ha diferents tipus de generadors:</p>
 
-<p>Tancar el server</p>
+<ul>
+  <li>Controler</li>
+  <li>Model</li>
+  <li>Migration</li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Ctrl + c
-</code></pre>
-</div>
+<p>Rails espera que el <strong>nom del model</strong> es declare en sigular i generarà una <strong>tabla</strong> amb el mateix model, però en <strong>plural</strong>. Així, si anomenem al model <code class="highlighter-rouge">Article</code>, la tabla s’anomenarà <code class="highlighter-rouge">Articles</code>.</p>
 
-<p>Generem un controlador anomenat <code class="highlighter-rouge">welcome</code> que va a tenir un mètode anomenat <code class="highlighter-rouge">index</code>.</p>
+<p>Cal utilitzar noms en anglés, perquè Rails utilitzarà la paraula en anglés.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails generate controller welcome index
-</code></pre>
-</div>
+<p>Després de generador anem a indicar els <strong>camps</strong> de la taula. Amb dos punts separarem el tipus de dades en la base de dades. Quan creem una taula hem d’especificar el tipus de dada que es va a guardar en eixe camp.</p>
 
-<p>Ens dirigim a la carpeta <code class="highlighter-rouge">app/controlers/</code>, a l’arxiu <code class="highlighter-rouge">welcome_controler.sh</code>:</p>
+<p>Per defecte, Rails, va a especificar el <code class="highlighter-rouge">var_char</code>, això vol dir que si no especifiquem, doncs ell va a intentar endevinar què és, és a dir si escrivim <code class="highlighter-rouge">title</code> ens posarà com a tipus de dada <code class="highlighter-rouge">string</code>, per defecte serà una cadena.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">WelcomeControler</span> <span class="o">&gt;</span> <span class="no">ApplicationControler</span>
-  <span class="k">def</span> <span class="nf">index</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div>
-<p>Tots els controladors hereten de <code class="highlighter-rouge">ApplicationControler</code>.</p>
+<p>El segon camp <code class="highlighter-rouge">body</code> l’especifiquem com <code class="highlighter-rouge">text</code>, ja que va a ser una cadena molt llarga.</p>
 
-<p>Tots els controladors han d’acabar amb guió baix i la paraula <code class="highlighter-rouge">Controler</code>.</p>
+<p>Els camps es poden escriure en l’idioma que desitgem, però la tabla és millor que la escrivim en anglés.</p>
 
-<p>També es genera un arxiu a la carpeta <code class="highlighter-rouge">app/view/welcome/</code> anomenat <code class="highlighter-rouge">index.html.erb</code>:</p>
+<p>S’ha creat un arxiu anomenat <code class="highlighter-rouge">Article</code> dins del directori <code class="highlighter-rouge">app/models/</code>.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Welcome</span><span class="c1">#index&lt;/h1&gt;</span>
-<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">find</span> <span class="n">me</span> <span class="k">in</span> <span class="n">app</span><span class="o">/</span><span class="n">viers</span><span class="o">/</span><span class="n">welcome</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">erb</span><span class="o">&lt;</span><span class="sr">/p&gt;
-</span></code></pre>
-</div>
-<p>Podem posar en el navegador:</p>
+<p>No vàrem d’haver especificat a Rails:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">localhost</span><span class="p">:</span><span class="mi">3000</span><span class="o">/</span><span class="n">welcome</span><span class="o">/</span><span class="n">index</span>
-</code></pre>
-</div>
-
-<p>Així que, la sintaxi que segueix és el nom del controlador i nom de l’arxiu.</p>
-
-<p>Podem canviar la pàgina de benvinguda a l’arxiu <code class="highlighter-rouge">config/routes.rb</code> en la línia on posa <code class="highlighter-rouge">get 'welcome/index'. Deixarem la línia </code>get<code class="highlighter-rouge"> com està i canviarem la línia </code>root` per redirigir-la on volem.</p>
-
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
-  <span class="n">get</span> <span class="s1">'welcome/index'</span>
-
-  <span class="c1"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span>
-<span class="k">end</span>
-</code></pre>
-</div>
-
-<p>Font: <a href="http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_primer_aplicacion">CodigoFacilito Rails4</a></p>
+<ul>
+  <li>Tabla =&gt; articles</li>
+  <li>Camps =&gt; article.title() =&gt; ‘Títol de l’artícle’</li>
+  <li>Escriure mètodes</li>
+</ul>
 
 
   </div>
