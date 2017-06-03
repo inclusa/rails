@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 01 Presentació
-date: 2017-05-29 00:00:00
+date: 2017-05-29
 description: Presentació de Rails
 keywords: rails
 coments: true

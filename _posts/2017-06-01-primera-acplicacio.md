@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 02 Primera aplicacio
-date: 2017-06-01 dj 05:51
+date: 2017-06-01
 description: Primera aplicació
 keywords: app
 coments: true

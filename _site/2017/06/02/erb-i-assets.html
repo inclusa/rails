@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Ruby on Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/">Ruby on Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">03 erb i assets</h2>
+    <p class="post-meta">2017-06-02 21:27:00 +0200</p>
+    <p>Partim de l’arxiu <code class="highlighter-rouge">app/views/welcome/index.html.erb</code> on hem direccionat l’inici de Rails.</p>
+
+<p>El nom de l’arxiu és <code class="highlighter-rouge">index.html.erb</code> amb aquesta extensió <code class="highlighter-rouge">.erb</code>, la qual l’ha colocat Rails per defecte.</p>
+
+<p>El que ofereix aquesta extensió és accés a Ruby dins de la vista, <code class="highlighter-rouge">view</code>.</p>
+
+<h3 id="etiquetes">Etiquetes</h3>
+
+<p><code class="highlighter-rouge">&lt;%  %&gt;</code> aquesta serveix per a imprimir coses.
+<code class="highlighter-rouge">&lt;%=  %&gt;</code> aquesta avalua el codi i l’imprimeix dins de la pàgina web.</p>
+
+<p>Exemple:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">% [1,2,3,4].each </span><span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span> <span class="sx">%&gt;
+    &lt;p&gt;</span><span class="no">N</span><span class="err">ú</span><span class="ss">mero: </span><span class="o">&lt;</span><span class="sx">%= number%&gt;&lt;/p&gt;
+&lt;%end%&gt;
+</span></code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 1
+
+Número: 2
+
+Número: 3
+
+Número: 4
+</code></pre>
+</div>
+
+<p>Això seria com un cicle <code class="highlighter-rouge">for</code> en altres llenguatges.</p>
+
+<p>Si ara incorporem un <code class="highlighter-rouge">=</code> al principi de la llista:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= [1,2,3,4].each do |number| %&gt;
+    &lt;p&gt;Número: &lt;%=</span> <span class="n">number</span><span class="sx">%&gt;&lt;/p&gt;</span>
+<span class="o">&lt;%</span><span class="k">end</span><span class="sx">%&gt;
+</span></code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 1
+
+Número: 2
+
+Número: 3
+
+Número: 4
+
+[1, 2, 3, 4] 
+</code></pre>
+</div>
+
+<p>No sols imprimeix la les iteracions sinó també la llista.</p>
+
+<p>A més podem fer altres operacions:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= [1,2,3,4].each do |number| %&gt;
+    &lt;p&gt;Número: &lt;%=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">%&gt;&lt;</span><span class="sr">/p&gt;
+&lt;%end%&gt;
+</span></code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 2
+
+Número: 4
+
+Número: 6
+
+Número: 8
+</code></pre>
+</div>
+
+<p>Ací podem posar tot el que siga vàlid en Ruby.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= [1,2,3,4].each do |number| %&gt;
+    &lt;p&gt;Número: &lt;%=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">%&gt;&lt;</span><span class="sr">/p&gt;
+&lt;%end%&gt;
+&lt;% mundo = "Uriel" %&gt;
+&lt;%= "Hola </span><span class="si">#{</span><span class="n">mundo</span><span class="si">}</span><span class="sr">" %&gt;
+</span></code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Número: 2
+
+Número: 4
+
+Número: 6
+
+Número: 8
+
+Hola Uriel 
+</code></pre>
+</div>
+
+<p>Tots els recursos van a la carpeta <code class="highlighter-rouge">app/assets</code>. En la carpeta <code class="highlighter-rouge">app/assets/stylesheets</code> cal posar tots els arxius d’estils necessaris.</p>
+
+<p>Ruby col·loca dins l’arxiu <code class="highlighter-rouge">applications.css</code> una sentència anomenada <code class="highlighter-rouge">require_tree</code>, la qual va a afegir totes les fulles d’estil que trobe a la carpeta <code class="highlighter-rouge">stylesheets</code>.</p>
+
+<p>Per això anem la web http://flexboxgrid.com/ i baixem aquest full d’estils. El guardem a la carpeta <code class="highlighter-rouge">app/assets/stylesheets/</code> amb el nom <code class="highlighter-rouge">flexboxgrid.css</code>.</p>
+
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>
