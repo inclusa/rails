@@ -27,7 +27,7 @@ Generem un controlador anomenat `welcome` que va a tenir un mètode anomenat `in
 
     rails generate controller welcome index
 
-Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.sh`:
+Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.rb`:
 
 ```ruby
 class WelcomeControler > ApplicationControler
