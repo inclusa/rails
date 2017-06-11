@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 03 erb i assets
+title: 03 Erb i assets
 date: 2017-06-02 dv 21:27
 description: Extensió i carpeta de recursos
 keywords: erb assets
@@ -112,5 +112,5 @@ Tots els recursos van a la carpeta `app/assets`. En la carpeta `app/assets/style
 
 Ruby col·loca dins l'arxiu `applications.css` una sentència anomenada `require_tree`, la qual va a afegir totes les fulles d'estil que trobe a la carpeta `stylesheets`.
 
-Per això anem la web http://flexboxgrid.com/ i baixem aquest full d'estils. El guardem a la carpeta `app/assets/stylesheets/` amb el nom `flexboxgrid.css`.
+Per això anem la web [http://flexboxgrid.com/](http://flexboxgrid.com/) i baixem aquest full d'estils. El guardem a la carpeta `app/assets/stylesheets/` amb el nom `flexboxgrid.css`.
 
