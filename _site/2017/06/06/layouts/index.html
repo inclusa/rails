@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">06 Layouts</h2>
+    <p class="post-meta">2017-06-06</p>
+    <ul>
+  <li>Ruby on Rails Layouts 					       :NOTE:</li>
+</ul>
+
+<p>Un <strong>layout</strong> s’encarrega d’<strong>agrupar les vistes que tenen contingut en comú</strong>.</p>
+
+<p>Si mirem <code class="highlighter-rouge">views/layouts/application.html.erb</code></p>
+
+<p>En lloc d’estar escrivint vista per vista creem un <strong>layout</strong> que tinga els elements comuns, com ara <strong>títol</strong>, <strong>full d’estils</strong>, <strong>javascript</strong>, declaració del <strong>DOCTYPE</strong>, <strong>html</strong>, <strong>head</strong>, <strong>body</strong>, etc.</p>
+
+<p>Així, es crea un <strong>layout</strong> i sols es referencia la part que està composada per la paraula <strong>yield</strong>.</p>
+
+<p>L’estructura comú deu anar en el <strong>layoud</strong>, així no l’hem d’estar descrivint.</p>
+
+<p>D’aquesta manera, Ruby on Rails proposa una pràctica coneguda com <strong>DRY</strong>, <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself. Així, cal no repetir codi, ja que hauriem de fer-ho en moltes parts.</p>
+
+<p>És ací on es pot construir un menú de navegació.</p>
+
+<p>Una vegada introduim el codi <strong>css</strong> ens centrarem en el codi <strong>Ruby</strong> que s’utilitza per escriure els enllaços:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to "Inicio", root_path %&gt;
+</span></code></pre>
+</div>
+
+<p>Utilitzem els <strong>helpers methods</strong> de Ruby. Així en lloc d’escriure:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to "Inicio", root_path %&gt;
+&lt;a href=</span><span class="s2">"/"</span><span class="o">&gt;</span><span class="no">Inicio</span><span class="o">&lt;</span><span class="sr">/a&gt;
+</span></code></pre>
+</div>
+
+<p>El deixem així, i funcioarà igualment, ens portarà a l’inici:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to "Inicio", root_path %&gt;
+</span></code></pre>
+</div>
+
+<p>Ara podem definir un arxiu anomenat <code class="highlighter-rouge">style.scss</code>.</p>
+
+<p>L’extensió <code class="highlighter-rouge">.scss</code> és deguda al llenguatge SASS.</p>
+
+<p>Així s’arrossegarà tot el disseny.</p>
+
+<p>Font: <a href="http://codigofacilito.com/videos/curso_ruby_on_rails_desde_cero_layouts">Código Facilito</a></p>
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

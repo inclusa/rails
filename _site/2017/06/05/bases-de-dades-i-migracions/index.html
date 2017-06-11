@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">05 Bases de dades i migracions</h2>
+    <p class="post-meta">2017-06-05</p>
+    <p>Rails 05 Bases de dades i migracions 				       :NOTE:</p>
+
+<p>Per defecte obrim l’arxiu <code class="highlighter-rouge">config/database.yml</code> <strong>Ruby on Rails</strong> utilitza <strong>sqlite</strong>.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">default:</code> =&gt; <code class="highlighter-rouge">adater: sqlite3</code>, utiliza esta base de datos.</li>
+  <li><code class="highlighter-rouge">development:</code> =&gt; <code class="highlighter-rouge">database: db/development.sqlite3</code>.</li>
+  <li><code class="highlighter-rouge">test:</code> =&gt; <code class="highlighter-rouge">database: db/test.sqlite3</code>.</li>
+  <li><code class="highlighter-rouge">production:</code> =&gt; <code class="highlighter-rouge">database: db/test.sqlite3</code>.</li>
+</ul>
+
+<p>Cada vegada que executem el comandament <code class="highlighter-rouge">rake</code> las base de dades de <code class="highlighter-rouge">test</code> es ba a borrar. Aquesta és la raó per la qual <strong>mai al nomenar de la mateixa forma totes les bases de dades</strong>. Cada base de dades ha de tenir un nom diferent.</p>
+
+<p>En cas de voler utilizar altra base de dades, per exemple, <code class="highlighter-rouge">mysql2</code> caldrà comentar la gema <code class="highlighter-rouge">gem 'sqlite3'</code> i escriure <code class="highlighter-rouge">gem 'mysql2'</code>. En cas de voler córrer-lo en <strong>Heroku</strong> caldrà posar <code class="highlighter-rouge">gem 'postgresql'</code>, ja que és la base de dades que utilitza.</p>
+
+<p>Si finalment fem el canvi cal córrer aquest comandament <code class="highlighter-rouge">bundle install</code>.</p>
+
+<p>Si es vol utilizar <code class="highlighter-rouge">msql2</code> cal canvia la configuració de l’arxiu  <code class="highlighter-rouge">config/database.yml</code>.</p>
+
+<p>Configurem la base de dades per defecte, per a <strong>mysql2</strong>.</p>
+
+<p>ATENCIÓ: no canviar de la configuració a partir d’ací si el que volem és deixar convigurat <code class="highlighter-rouge">sqlite3</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>development:
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
+  port: 3306
+  database: blog
+  pool: 5
+  timeout: 5000
+</code></pre>
+</div>
+
+<p>Ara iniciem el servidor per veure que no hi ha error:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rails s
+</code></pre>
+</div>
+
+<p>Ens dóna un error perquè no hem creat la base de dades.</p>
+
+<p>La creem amb el comandament:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rake db:create
+</code></pre>
+</div>
+
+<p>Li anem a dir a Rails <strong>sols vas a instal·lar sqlite3 quan tingues l’entorn de desenvolupament <code class="highlighter-rouge">test</code></strong>.</p>
+
+<p>Per fer això cal anar a l’arxiu <code class="highlighter-rouge">Gemfile</code> i posar aquest codi en la abans de la línia on veiem la paraula group:</p>
+
+<p><strong>Codi modificat per configurar <code class="highlighter-rouge">mysql2</code></strong>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>group: test do
+  gem 'sqlite3'
+end
+</code></pre>
+</div>
+
+<p>Rails té tres entors:</p>
+
+<ul>
+  <li><strong>test</strong>: quan tenim tests automàtics per provar l’aplicació.</li>
+  <li><strong>desenvolupament</strong>: quan estem desenvolupant l’aplicació.</li>
+  <li><strong>producció</strong>: entorn real.</li>
+</ul>
+
+<p>Tornem a alçar el server:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rails s
+</code></pre>
+</div>
+
+<p>Esperem un error: <code class="highlighter-rouge">PendingMigrationError</code>, també ens diu com solucionar-ho.</p>
+
+<p>Les migracions es troben a la carpeta <code class="highlighter-rouge">db/migrate/</code> allí trobarem un arxiu que començarà per la data en la qual s’ha fet la migració, on Ruby està creant la taula.</p>
+
+<p>Quan hem vist tot això hem de tornar a <code class="highlighter-rouge">sqlite3</code>, aleshores borrarem el codi incorporat abans. Bàsicament no tocarem la configuració que ve per defecte.</p>
+
+<h3 id="les-migracions">Les migracions</h3>
+
+<p>Les migracions són arxius que s’encarreguen de fer modificacions a la base de dades, ja siga agregar taules, crear camps, agregar index, borrar taules, borrar camps, etc., tot es fa a través de les migracions, no directament en la base de dades.</p>
+
+<p>Les migracions es comporten com en una espècie de <strong>pila</strong>, una <strong>pila</strong> és una estructura en el què l’últim arxiu que agregues és el primer que traus.</p>
+
+<p>Per executar la migració cal córrer el comandament:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+</code></pre>
+</div>
+
+<p>En aquest cas el que fa és crear el que està en el mètode <code class="highlighter-rouge">change</code> que serà crear la tabla <code class="highlighter-rouge">articles</code>.</p>
+
+<p>Tornem a córrer el servidor:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rails s
+</code></pre>
+</div>
+
+<p>Si actualitzem la pàgina no ens donen errades.</p>
+
+<p>Així, ja està creada la base de dades.</p>
+
+<p>Si ens equivoquem amb la taula o algun mètode existeix un comandament anomenat <code class="highlighter-rouge">rollback</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:rollback</span>
+</code></pre>
+</div>
+
+<p>Aquest mètode fa l’invers del mètode <code class="highlighter-rouge">change_table</code>, que és <code class="highlighter-rouge">role_table</code>.</p>
+
+<p>Caldria fer:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:up</span>
+<span class="n">rake</span> <span class="ss">db: </span><span class="n">migrate</span>
+</code></pre>
+</div>
+
+<p>Aquesta és la part que anomenàvem com una <strong>pila</strong>.</p>
+
+<p>L’última migració que es va executar és l’última que es va a revertir quan nosaltres fem <code class="highlighter-rouge">rollback</code>. Seria com desfer o anar cap enrere en totes les migracions. Això ens permet fer canvis a la base de dades de manera molt sencilla.</p>
+
+<p>Al mateix temps que passa això es crea un arxiu dins de la carpeta <code class="highlighter-rouge">db/migrate</code>, anomenat <code class="highlighter-rouge">schema.rb</code>. Aquest arxiu guarda l’esquema de la nostra base de dades.</p>
+
+<p>Podem obrir la cònsola de Rails, és una cònsola especial on podem executar mètodes.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rails</span> <span class="n">console</span>
+</code></pre>
+</div>
+
+<p>Allí teclegem:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="ss">:B</span><span class="o">&gt;</span> <span class="no">Article</span><span class="p">.</span><span class="nf">all</span>
+</code></pre>
+</div>
+
+<p>Ens torna informació buida perquè no tenim cap artícle.</p>
+
+<p>Font: <a href="http://codigofacilito.com/videos/bases_de_datos_y_migraciones_curso_ruby_on_rails_desde_cero">Código Facilito</a></p>
+
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">04 Models</h2>
+    <p class="post-meta">2017-06-03</p>
+    <p>Anem a utilitzar el primer generador de Ruby on Rails</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rails generate model Article title:strings body:text visit_count:integer 
+</code></pre>
+</div>
+
+<p>Output</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  Running via Spring preloader in process 25314
+  invoke  active_record
+  create    db/migrate/20170603024931_create_articles.rb
+  create    app/models/article.rb
+  invoke    test_unit
+  create      test/models/article_test.rb
+  create      test/fixtures/articles.yml
+</code></pre>
+</div>
+
+<p>Els generadors es criden amb el nom <code class="highlighter-rouge">generate</code> + <code class="highlighter-rouge">nom_del_model_en_singular</code>.</p>
+
+<p>Hi ha diferents tipus de generadors:</p>
+
+<ul>
+  <li>Controler</li>
+  <li>Model</li>
+  <li>Migration</li>
+</ul>
+
+<p>Rails espera que el <strong>nom del model</strong> es declare en <strong>sigular</strong> i generarà una <strong>tabla</strong> amb el mateix model, però en <strong>plural</strong>. Així, si anomenem al model <code class="highlighter-rouge">Article</code>, la tabla s’anomenarà <code class="highlighter-rouge">Articles</code>.</p>
+
+<p>Cal utilitzar noms en anglés, perquè Rails utilitzarà la paraula en anglés.</p>
+
+<p>Després de generador anem a indicar els <strong>camps</strong> de la taula. Amb dos punts separarem el tipus de dades en la base de dades. Quan creem una taula hem d’especificar el tipus de dada que es va a guardar en eixe camp.</p>
+
+<p>Per defecte, Rails, va a especificar el <code class="highlighter-rouge">var_char</code>, això vol dir que si no especifiquem, doncs ell va a intentar endevinar què és, és a dir si escrivim <code class="highlighter-rouge">title</code> ens posarà com a tipus de dada <code class="highlighter-rouge">string</code>, per defecte serà una cadena.</p>
+
+<p>El segon camp <code class="highlighter-rouge">body</code> l’especifiquem com <code class="highlighter-rouge">text</code>, ja que va a ser una cadena molt llarga.</p>
+
+<p>Els camps es poden escriure en l’idioma que desitgem, però la tabla és millor que la escrivim en anglés.</p>
+
+<p>S’ha creat un arxiu anomenat <code class="highlighter-rouge">Article</code> dins del directori <code class="highlighter-rouge">app/models/</code>.</p>
+
+<p>No vàrem d’haver especificat a Rails:</p>
+
+<ul>
+  <li>Tabla =&gt; articles</li>
+  <li>Camps =&gt; article.title() =&gt; ‘Títol de l’artícle’</li>
+  <li>Escriure mètodes</li>
+</ul>
+
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>
