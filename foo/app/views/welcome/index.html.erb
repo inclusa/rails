@@ -1,18 +1,82 @@
 <div class="well">
   <div class="jumbotron">
     <h1>Welcome</h1>
-    <p>Entorn Rails</p>
-    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+    <p>Entorn Rails. Entorn d'aprenentatge on provarem tot allò que anem aprenent.</p>
   </div>
 
-  <h2>Aplicant Ruby</h2>
 
-  <%= [1,2,3,4].each do |number| %>
-    <p>Número: <%= number * 2 %></p>
-  <%end%>
-  <br />
-  <br />
-  <% missatge = "xic" %>
-  <%= "Bon dia #{missatge}!" %>
 </div>
+
+<div class="row">
+      <div class="col-lg-4">
+	<div class="alert alert-dismissible alert-success">  
+
+	  <p>Aplicacions de Ruby on rails</p>
+	  	  
+	</div>
+	
+      </div>
+      
+      <div class="col-lg-4">
+	
+	<div class="alert alert-dismissible alert-warning">
+	  <b>1. Aplicant Ruby</b>
+	  
+	  <%= [1,2,3,4].each do |number| %>
+	  
+	  <p>Número: <%= number * 2 %></p>
+	  
+	  <%end%>
+	  
+	  <br />
+	  
+	  <br />
+	  <p><b>2. Missatge</b></p>
+
+	  <% missatge = "xic" %>
+	  
+	  <%= "Bon dia #{missatge}!" %>
+
+	  <br /><br />
+
+	  <b>3. Assignatures de 5é de primària</b>
+
+	  <p>Per ordre afabètic</p>
+
+	  <br />
+	  
+	  <% a = %w[Valencià Castellà Anglés Mates Socials Naturals Plàstica Educació\ Física] %>
+
+	  <%= a.sort * " - " %>
+
+	  <br />
+	  <br />
+
+	  <b>4. Jugant amb classes</b>
+	  
+	</div>
+		
+      </div>
+      
+      <div class="col-lg-4">
+	
+	<div class="alert alert-dismissible alert-danger">
+	   <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+	</div>
+	
+      </div>
+      
+      <div class="col-lg-12">
+
+	<div class="alert alert-dismissible alert-info">
+	  
+	  <strong>Ei!</strong> Avisos importants <a href="#" class="alert-link">alert needs </a>.
+	  
+	</div>
+	
+      </div>
+      
+</div>
+
+</div>
+

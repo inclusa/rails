@@ -16,7 +16,7 @@ Per defecte obrim l'arxiu `config/database.yml` **Ruby on Rails** utilitza **sql
 - `test:` => `database: db/test.sqlite3`.
 - `production:` => `database: db/test.sqlite3`.
 
-Cada vegada que executem el comandament `rake` las base de dades de `test` es ba a borrar. Aquesta és la raó per la qual **mai al nomenar de la mateixa forma totes les bases de dades**. Cada base de dades ha de tenir un nom diferent.
+Cada vegada que executem el comandament `rake` las base de dades de `test` es va a borrar. Aquesta és la raó per la qual **mai al nomenar de la mateixa forma totes les bases de dades**. Cada base de dades ha de tenir un nom diferent.
 
 En cas de voler utilizar altra base de dades, per exemple, `mysql2` caldrà comentar la gema `gem 'sqlite3'` i escriure `gem 'mysql2'`. En cas de voler córrer-lo en **Heroku** caldrà posar `gem 'postgresql'`, ja que és la base de dades que utilitza.
 
