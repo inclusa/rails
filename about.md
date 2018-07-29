@@ -12,16 +12,20 @@ permalink: /about/
 
 ### 01 Tutorials
 
-1. [Tutor de Ruby on Rails](http://hackerdude.com/courses/rails/)
-2. [Tutorial més tècnic](http://gastonramos.com.ar/rails21/)
-3. [Ruby on Rails para programadores que tienen cosas importantes que hacer](http://yottabi.com/mld.pdf)
-4. [Rails Girls Guides](http://guides.railsgirls.com/)
-5. [Ruby on Rails Tutorial - Rails 5](https://www.railstutorial.org/book)
+1. [Ruby on Rails para programadores que tienen cosas importantes que hacer](http://yottabi.com/mld.pdf)
+2. [Rails Girls Guides](http://guides.railsgirls.com/)
+3. [Ruby on Rails Tutorial - Rails 5](https://www.railstutorial.org/book)
 
 ### 02 Videotutorials
 
 1. [Santiago Ponce](http://santipm.com/blog/curso-de-ruby-on-rails-gratis/)
+2. [RailsCast](http://railscasts.com/)
 
-### CSS
+### 03 CSS
 
 1. [Bootstrap](https://launchschool.com/blog/integrating-rails-and-bootstrap-part-1/)
+
+### 04 Altres
+
+1. [Tutor de Ruby on Rails](http://hackerdude.com/courses/rails/)
+2. [Tutorial més tècnic](http://gastonramos.com.ar/rails21/)
