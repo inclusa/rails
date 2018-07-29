@@ -22,4 +22,6 @@ permalink: /about/
 
 1. [Santiago Ponce](http://santipm.com/blog/curso-de-ruby-on-rails-gratis/)
 
+### CSS
 
+1. [Bootstrap](https://launchschool.com/blog/integrating-rails-and-bootstrap-part-1/)
