@@ -20,6 +20,7 @@ permalink: /about/
 
 1. [Santiago Ponce](http://santipm.com/blog/curso-de-ruby-on-rails-gratis/)
 2. [RailsCast](http://railscasts.com/)
+3. [Curso de Rails 5](https://www.youtube.com/watch?v=Nqwbp5djGtM&list=PLIddmSRJEJ0uaT5imV49pJqP8CGSqN-7E)
 
 ### 03 CSS
 
