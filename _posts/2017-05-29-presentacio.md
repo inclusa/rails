@@ -7,6 +7,8 @@ keywords: rails
 coments: true
 ---
 
+**Ruby on Rails** va estar iniciat per David Heinemeier Hansson en 2004. Sorgeix en el desenvolupament de [BaseCamp](https://basecamp.com/how-it-works) Es basa en la filosofia Don't Repeat Yourself (DRY).
+
 ### 1. Què és Ruby on Rails?
 
 Un **Framework** escrit en **Ruby** per a crear aplicacions web. Està disenyat per a programar aplicacions web de manera més sencilla i **àgil**, **asumint** el que cada desenvolupador necessita per iniciar.
@@ -52,4 +54,11 @@ Ryby on Rails és un framework d'aplicacions web de codi obert escrit en el llen
 - ThemeForest
 - BrainTree
 
-Font [Código Facilito](http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_introduccion)
+### 4. Instal·lació
+
+Es poden seguir aquests [passos](https://basecamp.com/how-it-works) per tal d'instal·lar Ruby on Rails al nostre sistema.
+
+### 5. Font
+
+- [Código Facilito](http://codigofacilito.com/videos/curso_de_ruby_on_rails_desde_cero_introduccion)
+- [Curso de Ruby on Rails 5](https://www.youtube.com/watch?v=Nqwbp5djGtM&list=PLIddmSRJEJ0uaT5imV49pJqP8CGSqN-7E)
