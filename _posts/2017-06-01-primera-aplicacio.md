@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 02 Primera aplicacio
+title: 02 Primera aplicació
 date: 2017-06-01
 description: Primera aplicació
 keywords: app
