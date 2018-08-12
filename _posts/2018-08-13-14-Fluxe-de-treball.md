@@ -13,3 +13,4 @@ El fluxe de treball per crear aplicacions Rails és el següent:
 6. Escriu el Codi del Controlador, posa-ho a la teua aplicació.
 7. Crea Vistes per tal de presentar les teues dades a través de la interface d'usuari.
 
+Font: [Workflow de Rails](https://www.tutorialspoint.com/ruby-on-rails/rails-examples.htm)
