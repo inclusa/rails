@@ -127,4 +127,4 @@ production:
    password: <Password for rubyuser>
 ```
 
-
+Font: [Tutorials Point Rails](https://www.tutorialspoint.com/ruby-on-rails/rails-database-setup.htm)
