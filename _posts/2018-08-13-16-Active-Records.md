@@ -108,3 +108,5 @@ Explicació:
 
 - `validates_presence_of`: protegeix els camps `NOT NULL` contra l'entrada de l'usuari que falta.
 - `validates_numericality_of`: impedeix que l'usuari introduisca dades no-numèriques.`
+
+Font: [ActiveRedord](https://www.tutorialspoint.com/ruby-on-rails/rails-active-records.htm)
