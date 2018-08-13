@@ -26,7 +26,7 @@ Traduir un model de domini a SQL és generalment senzill, sempre que recordeu qu
 
 Per a crear l'arxiu **Active Record** per a les nostres entitats per a l'aplicació de llibreria, introduirem aquest dos models `Book` i `Subject`:
 
-```rails
+```ruby
 rails g model Book
 rails g model Subject
 ```
@@ -41,13 +41,13 @@ El contingut dels arxius és el següent:
 
 book.rb
 
-```rails
+```ruby
 class Book < ActiveRecord::Base
 end
 ```
 
 
-```rails
+```ruby
 class Subject < ActiveRecord::Base
 end
 ```
@@ -69,7 +69,7 @@ Indicarem estes associacions afegint declaracions a estos models:
 
 Ara, necessites dir Rails que quines relacions vols establir entre la llibreria del dades del sistema. Per fer-ho cal modificar `book.rb` i `subject.rb` així:
 
-```rails
+```ruby
 class Book < ActiveRecord::Base
     belongs_to :subject
 end
@@ -77,7 +77,7 @@ end
 
 Hem d'usar el nom en **singular** (Book), perquè `Book` pot pertànyer a un isol `subject`.
 
-```rails
+```ruby
 class Subject < ActiveRecord::Base
     belongs_to :books
 end
@@ -96,7 +96,7 @@ Les validacions són:
 
 Cal obir `book.rb` en el subdirectori `app/model` i establir les validacions:
 
-```rails
+```ruby
 class Book < ActiveRecord::Base
    belongs_to :subject
    validates_presence_of :title

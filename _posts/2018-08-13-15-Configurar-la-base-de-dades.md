@@ -13,7 +13,7 @@ Per a inicialitzar la base de dades necessitem privilegis de **root**.
 
 # Configurar la base de dades en MySQL
 
-```bash
+```ruby
 ysql> create database library_development;
 Query OK, 1 row affected (0.01 sec)
 
@@ -29,7 +29,7 @@ Query OK, 0 rows affected (0.00 sec)
 
 `dtabase.yml` roman a `library/config`.
 
-```bash
+```ruby
 development:
    adapter: mysql
    database: library_development
@@ -56,13 +56,13 @@ production:
 
 Creem l'usuari:
 
-```bash
+```ruby
 sudo -u postgres createuser rubyuser -s
 ```
 
 Elegim un password:
 
-```bash
+```ruby
 sudo -u postgres psql
 
 postgres=# \password rubyuser
@@ -70,7 +70,7 @@ postgres=# \password rubyuser
 
 Creem una base de dades de desenvolupament:
 
-```bash
+```ruby
 postgres=# CREATE DATABASE library_development OWNER rubyuser;
 
 CREATE DATABASE
@@ -78,15 +78,13 @@ CREATE DATABASE
 
 Creem una base de dades de producció:
 
-```bash
+```ruby
 postgres=# CREATE DATABASE library_development OWNER rubyuser;
 
 CREATE DATABASE
 ```
 
-Creem la base de dades de test:
-
-```bash
+Creem la base de dades de tesruby```ruby
 postgres=# CREATE DATABASE library_test OWNER rubyuser;
 
 CREATE DATABASE
@@ -100,7 +98,7 @@ Trobarem aquest arxiu ací: `library/config`.
 
 Contindrà aquesta informació:
 
-```bash
+```ruby
 default: &default
    adapter: postgresql
    encoding: unicode
