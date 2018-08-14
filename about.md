@@ -37,3 +37,7 @@ permalink: /about/
 
 1. [Railsware](https://railsware.com/blog/2017/11/09/best-books-to-learn-ruby-on-rails/)
 2. [Railsgirls Lima](http://railsgirlslima.github.io/)
+
+### 06 Cheat Sheet
+
+1. [Rails Beginner](https://www.pragtob.info/rails-beginner-cheatsheet/#)
