@@ -9,6 +9,7 @@ permalink: /about/
 
 1. [Ruby on Rails](http://rubyonrails.org/)
 2. [Wikipedia: Ruby on Rails](https://es.wikipedia.org/wiki/Ruby_on_Rails)
+3. [Ruby on Rails Notes for Professionals](https://books.goalkicker.com/RubyOnRailsBook/)
 
 ### 01 Tutorials
 
