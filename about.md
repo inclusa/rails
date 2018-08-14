@@ -32,3 +32,7 @@ permalink: /about/
 
 1. [Tutor de Ruby on Rails](http://hackerdude.com/courses/rails/)
 2. [Tutorial més tècnic](http://gastonramos.com.ar/rails21/)
+
+### 05 Webs on en parlen
+
+1. [Railsware](https://railsware.com/blog/2017/11/09/best-books-to-learn-ruby-on-rails/)
