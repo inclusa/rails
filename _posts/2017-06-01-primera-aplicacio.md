@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 02 Primera aplicacio
+title: 02 Primera aplicació
 date: 2017-06-01
 description: Primera aplicació
 keywords: app
@@ -11,9 +11,25 @@ Rails bé amb un grup important de generadors de codi.
 
     rails new blog
 
+Per defecte es crea una base de dades a `sqlite`, en cas que vullguem vincular aquesta base de dades a altre servei de base de dades ho farem així:
+
+    rails new projecte --database=postgres
+    rails new projecte -d=postgres
+
+Podem crear una base de dades per defecte així:
+
+    rails db:drop db:create db:migrate
+
+Explicació:
+
+- `drop`: elimina la base de dades que hi havia.
+- `create`: crea una nova base de dades.
+- `migrate`: migra la base de dades.
+
 Crea diferents arxius i instal·la gemes necessàries.
 
     rails server
+    rails s
 
 Arranca un server que porta el mateix framework.
 
@@ -26,7 +42,11 @@ Tancar el server
 Generem un controlador anomenat `welcome` que va a tenir un mètode anomenat `index`.
 
     rails generate controller welcome index
+<<<<<<< HEAD
     rails g controller welcome index
+=======
+    rails g controller wellcom index
+>>>>>>> 12d0c05426031b08a72fa8ae97001de13f8846a0
 
 Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.rb`:
 
