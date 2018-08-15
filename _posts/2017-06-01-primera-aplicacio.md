@@ -26,6 +26,7 @@ Tancar el server
 Generem un controlador anomenat `welcome` que va a tenir un mètode anomenat `index`.
 
     rails generate controller welcome index
+    rails g controller welcome index
 
 Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.rb`:
 
@@ -43,7 +44,7 @@ També es genera un arxiu a la carpeta `app/view/welcome/` anomenat `index.html.
 
 ```ruby
 <h1>Welcome#index</h1>
-<p>find me in app/viers/welcome/index.html.erb</p>
+<p>find me in app/views/welcome/index.html.erb</p>
 ```
 Podem posar en el navegador:
 
