@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">16 Active Records</h2>
+    <p class="post-meta">2018-08-13</p>
+    <p><strong>Rais Active Record</strong> és un <strong>Object/Relational Mapping (ORM)</strong>, és una capa de relació. Relaciona:</p>
+
+<ul>
+  <li>Mapes de taules amb classes.</li>
+  <li>Mapes de files amb objectes.</li>
+  <li>Mapes de columes amb atributs d’objectes.</li>
+</ul>
+
+<p>Ruby és el programa que manipula la base de dades. El mètode Ruby genera automàticament camps de noms de la base de dades.</p>
+
+<p>Cada objecte de l’<strong>Active Record</strong> és un <strong>CRUD</strong> (Create - Read - Update - Delete) mètode d’accés per a la base de dades. Esta estragegia permet dissenys simples per enviar simples mapes entre les taules de la base de dades i els objectes d’aplicacions.</p>
+
+<h1 id="transladant-a-model-de-domini-dins-dsql">Transladant a Model de Domini dins d’SQL</h1>
+
+<p>Traduir un model de domini a SQL és generalment senzill, sempre que recordeu que heu d’escriure SQL compatible amb Rails. En termes pràctics, heu de seguir certes regles:</p>
+
+<ul>
+  <li>Cada entitat (com ara llibre) obté una taula a la base de dades que porta el nom, però en plural (llibres).</li>
+  <li>Cada taula de coincidència d’entitats d’aquest tipus té un camp anomenat id, que conté un enter únic per a cada registre inserit a la taula.</li>
+  <li>Entitat entitat x i entitat y, si l’entitat pertany a l’entitat x, llavors la taula y té un camp anomenat x_id.</li>
+  <li>La major part dels camps de qualsevol taula emmagatzemen els valors de les propietats simples d’aquesta entitat (qualsevol cosa que sigui un número o una cadena).</li>
+</ul>
+
+<h1 id="creant-arxius-active-record-models">Creant Arxius Active Record (Models)</h1>
+
+<p>Per a crear l’arxiu <strong>Active Record</strong> per a les nostres entitats per a l’aplicació de llibreria, introduirem aquest dos models <code class="highlighter-rouge">Book</code> i <code class="highlighter-rouge">Subject</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">Book</span>
+<span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">Subject</span>
+</code></pre>
+</div>
+
+<p>Així, comptem que el generador crearà models anomenats <code class="highlighter-rouge">Book</code> i <code class="highlighter-rouge">Subject</code> en la pila d’instància de <code class="highlighter-rouge">books</code> i <code class="highlighter-rouge">subjects</code>. Els crearà començant per <strong>majúscula</strong> i usant la forma <strong>singular</strong>. Aquest és el paradigma que seguirà Rails cada vegada per a crear el model.</p>
+
+<p>Quan utilitzeu l’eina de generació, Rails crea un model d’arxiu que manté tots els mètodes únics del model i a les regles que defineix, un fitxer de prova de la unitat per a dur a terme un desenvolupment basat en proves, un fitxer de dades d’exemple (anomenat fixtures) que s’utilitzarà amb les proves unitàries i una migració de Rails que facilita la creació de taules i columnes de bases de dades.</p>
+
+<p>A banda de crear molts altres arxius i directoris, aquest crearà uns arxius anomenats <strong>book.rb</strong> i <strong>subject.rb</strong>, els quals contenen un esquelet definit en el directori <strong>app/models</strong>.</p>
+
+<p>El contingut dels arxius és el següent:</p>
+
+<p>book.rb</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Subject</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<h1 id="creant-associacions-entre-models">Creant Associacions entre Models</h1>
+
+<p>Quan tens més d’un model en les teues aplicacions de Rails, necessitaràs crear connexions entre aquests models. Pots fer això via associacions. <strong>Active Record</strong> suporta tres tipus d’associacions:</p>
+
+<ul>
+  <li><strong>Un-a-Un</strong>: Existeix una relació d’un a un quan un element té exactament un d’un altre element. Per exemple, una persona té exactament un aniversari o un gos té exactament un propietari.</li>
+  <li><strong>un-a-molts</strong>: Existeix una relació d’un a un quan un sol objecte pot ser membre de molts altres objectes. Per exemple, un tema pot tenir molts llibres.</li>
+  <li><strong>Molts-a-Molts</strong>: Existeix una relació de molts a molts quan el primer objecte està relacionat amb un o més d’un segon objecte i el segon objecte està relacionat amb un o molts dels primers objectes.</li>
+</ul>
+
+<p>Indicarem estes associacions afegint declaracions a estos models:</p>
+
+<ul>
+  <li><strong>has_one</strong>: té un</li>
+  <li><strong>has_many</strong>: té molts</li>
+  <li><strong>belongs_to</strong>: pertany a</li>
+  <li><strong>has_and_belongs_to_many</strong>: una pertany a molts</li>
+</ul>
+
+<p>Ara, necessites dir Rails que quines relacions vols establir entre la llibreria del dades del sistema. Per fer-ho cal modificar <code class="highlighter-rouge">book.rb</code> i <code class="highlighter-rouge">subject.rb</code> així:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+    <span class="n">belongs_to</span> <span class="ss">:subject</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Hem d’usar el nom en <strong>singular</strong> (Book), perquè <code class="highlighter-rouge">Book</code> pot pertànyer a un isol <code class="highlighter-rouge">subject</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Subject</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+    <span class="n">belongs_to</span> <span class="ss">:books</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Hem utilitzat el <strong>plural</strong> perquè una <code class="highlighter-rouge">Subject</code> pot tenir múltiples <code class="highlighter-rouge">books</code>.</p>
+
+<h1 id="implementant-validacions-sobre-models">Implementant Validacions sobre Models</h1>
+
+<p>La implementació de validacions es fa en un model Rails. Les dades estan dins de la base de dades que està definida en el actual model Rails, de manera que només té sentit definir quines dades vàlides impliquen a la mateixa ubicació.</p>
+
+<p>Les validacions són:</p>
+
+<ul>
+  <li>El valor del camp de <code class="highlighter-rouge">títol</code> <strong>no hauria de ser NULL</strong>.</li>
+  <li>El valor del camp del <code class="highlighter-rouge">format</code> ha de ser <strong>numèric</strong>.</li>
+</ul>
+
+<p>Cal obir <code class="highlighter-rouge">book.rb</code> en el subdirectori <code class="highlighter-rouge">app/model</code> i establir les validacions:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+   <span class="n">belongs_to</span> <span class="ss">:subject</span>
+   <span class="n">validates_presence_of</span> <span class="ss">:title</span>
+   <span class="n">validates_numericality_of</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:message</span><span class="o">=&gt;</span><span class="s2">"Error Message"</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Explicació:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">validates_presence_of</code>: protegeix els camps <code class="highlighter-rouge">NOT NULL</code> contra l’entrada de l’usuari que falta.</li>
+  <li><code class="highlighter-rouge">validates_numericality_of</code>: impedeix que l’usuari introduisca dades no-numèriques.`</li>
+</ul>
+
+<p>Font: <a href="https://www.tutorialspoint.com/ruby-on-rails/rails-active-records.htm">ActiveRedord</a></p>
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

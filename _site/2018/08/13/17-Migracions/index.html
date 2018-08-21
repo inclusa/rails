@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">17 Migracions</h2>
+    <p class="post-meta">2018-08-13</p>
+    <p>Les migracions en Rails permeten usar Ruby per a definr canvis en l’esquema de base de dades, fen possible l’ús d’un sistema de control de versions que manginga les coses sincronitzades amb el codi actual.</p>
+
+<p>Això té molts úsos, inclou:</p>
+
+<ul>
+  <li><strong>Equips de desenvolupadors</strong>: si una persona fa un canvi d’esquema, els altres desenvolupadors només necessiten actualitzar i executar <code class="highlighter-rouge">rake migrate</code>.</li>
+  <li><strong>Servidors de producció</strong>: executeu <code class="highlighter-rouge">rake migrate</code> quan desplaceu un nou llançament per actualitzar la base de dades.</li>
+  <li><strong>Màquines múltiples</strong>: si es desenvolupen tant en un ordinador de sobretaula com en un portàtil o en més d’una ubicació, les migracions poden ajudar-vos a mantenir-les sincronitzades.</li>
+</ul>
+
+<h1 id="què-pot-fer-la-migració-de-rails">Què pot fer la migració de Rails?</h1>
+
+<ul>
+  <li>create_table(name, options)</li>
+  <li>drop_table(name)</li>
+  <li>rename_table(old_name, new_name)</li>
+  <li>add_column(table_name, column_name, type, options)</li>
+  <li>rename_column(table_name, column_name, new_column_name)</li>
+  <li>change_column(table_name, column_name, type, options)</li>
+  <li>remove_column(table_name, column_name)</li>
+  <li>add_index(table_name, column_name, index_type)</li>
+  <li>remove_index(table_name, column_name)</li>
+</ul>
+
+<p><strong>Les migracions suporten aquest tipus de dades</strong>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">string</code> − xicotetes cadenes de text.</li>
+  <li><code class="highlighter-rouge">text</code> − peces de llargues de text amb descripcions.</li>
+  <li><code class="highlighter-rouge">integer</code> − nombres sensers.</li>
+  <li><code class="highlighter-rouge">float</code> − nombres decimals.</li>
+  <li><code class="highlighter-rouge">datetime</code> and <code class="highlighter-rouge">timestamp</code> − per magatzemar de dades de data i temps dins d’una columna.</li>
+  <li><code class="highlighter-rouge">date</code> and <code class="highlighter-rouge">time</code> − per magatzemar sols de dades i temps.</li>
+  <li><code class="highlighter-rouge">binary</code> − per magatzemar dades referents a imatges, audio o pel·lícules.</li>
+  <li><code class="highlighter-rouge">boolean</code> − per magatzemar verdader o fals.</li>
+</ul>
+
+<p><strong>Les opcions de col·lumnes vàlides són</strong>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">limit</code> ( :limit =&gt; “50” )</li>
+  <li><code class="highlighter-rouge">default</code> (:default =&gt; “blah” )</li>
+  <li><code class="highlighter-rouge">null</code>(:null =&gt; false implies NOT NULL)</li>
+</ul>
+
+<h1 id="crear-la-migració">Crear la migració</h1>
+
+<p>Aquesta és la sintaxi</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="n">table_name</span>
+</code></pre>
+</div>
+
+<p>Aquesta migració crearà l’arxiu: <code class="highlighter-rouge">db/migrate/001_table_name.rb</code>. La l’arxiu migrat conté la sintaxi bàsica de Ruby la qual descriu l’estructura de la base de dades.</p>
+
+<blockquote>
+  <p>Nota: Abans de fer la migració es recomana netejar les migracions existens generades pel model.</p>
+</blockquote>
+
+<p>Nosaltres, segunt l’exemple, crearem les migracions corresponents a les nostres taules: <code class="highlighter-rouge">books</code> i <code class="highlighter-rouge">subjects</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="n">books</span>
+<span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="n">subjects</span>
+</code></pre>
+</div>
+<h1 id="editar-el-codi">Editar el Codi</h1>
+
+<p>Anem al subdirectori <code class="highlighter-rouge">db/migrate/</code>de l’aplicació i editem cada arxiu.</p>
+
+<p>Modifiquem <code class="highlighter-rouge">001_books.rb</code>.</p>
+
+<p>La columna ID s’ha creat automaticament així que no modifiquem res:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Books</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+   
+   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">up</span>
+      <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+         <span class="n">t</span><span class="p">.</span><span class="nf">column</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">32</span><span class="p">,</span> <span class="ss">:null</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+         <span class="n">t</span><span class="p">.</span><span class="nf">column</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:float</span>
+         <span class="n">t</span><span class="p">.</span><span class="nf">column</span> <span class="ss">:subject_id</span><span class="p">,</span> <span class="ss">:integer</span>
+         <span class="n">t</span><span class="p">.</span><span class="nf">column</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:text</span>
+         <span class="n">t</span><span class="p">.</span><span class="nf">column</span> <span class="ss">:created_at</span><span class="p">,</span> <span class="ss">:timestamp</span>
+      <span class="k">end</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">down</span>
+      <span class="n">drop_table</span> <span class="ss">:books</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+<p>El mètode <code class="highlighter-rouge">self.up</code> ha estat usat quan hem migrat a una nova versió, <code class="highlighter-rouge">self.down</code> s’usa per a cridar algun canvi si és necessari. En aques moment, l’script serà utilitzat per a crear la taula <code class="highlighter-rouge">books</code>.</p>
+
+<p>Modifiquem<code class="highlighter-rouge">002_subjects.rb</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Subjects</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">up</span>
+
+      <span class="n">create_table</span> <span class="ss">:subjects</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+         <span class="n">t</span><span class="p">.</span><span class="nf">column</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:string</span>
+      <span class="k">end</span>
+
+      <span class="no">Subject</span><span class="p">.</span><span class="nf">create</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Physics"</span>
+      <span class="no">Subject</span><span class="p">.</span><span class="nf">create</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Mathematics"</span>
+      <span class="no">Subject</span><span class="p">.</span><span class="nf">create</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Chemistry"</span>
+      <span class="no">Subject</span><span class="p">.</span><span class="nf">create</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Psychology"</span>
+      <span class="no">Subject</span><span class="p">.</span><span class="nf">create</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Geography"</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">down</span>
+      <span class="n">drop_table</span> <span class="ss">:subjects</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<h1 id="executem-la-migració">Executem la migració</h1>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+</code></pre>
+</div>
+<p>Això crearà una tabla <code class="highlighter-rouge">schema_info</code> en cas que no existisca, la qual farà el seguiment de la base de dades, la quan tindrà una nova versió després de la nova migració.</p>
+
+<p><strong>Rake</strong> és un <strong>constructor</strong> de Ruby similar a <strong>Unix make</strong> amb el qual Rails pren avantatja, simplifica l’execució de tasques complexes i actualitza l’estructura de la base de dades.</p>
+
+<h1 id="corrent-migracions-per-a-producció-i-test-de-bases-de-dades">Corrent Migracions per a Producció i Test de Bases de Dades</h1>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">export</span> <span class="no">RAILS_ENV</span> <span class="o">=</span> <span class="n">production</span>
+
+<span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+
+<span class="n">export</span> <span class="no">RAILS_ENV</span> <span class="o">=</span> <span class="nb">test</span>
+
+<span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+
+<span class="n">export</span> <span class="no">RAILS_ENV</span> <span class="o">=</span> <span class="n">development</span>
+
+<span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+</code></pre>
+</div>
+
+<p>Font <a href="https://www.tutorialspoint.com/ruby-on-rails/rails-migrations.htm">Migracions</a></p>
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

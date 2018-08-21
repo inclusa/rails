@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">15 Configurar la base de dades</h2>
+    <p class="post-meta">2018-08-13</p>
+    <p>Hi ha tres maneres de configurar la base de dades:</p>
+
+<ul>
+  <li>library_development</li>
+  <li>library_production</li>
+  <li>library_test</li>
+</ul>
+
+<p>Per a inicialitzar la base de dades necessitem privilegis de <strong>root</strong>.</p>
+
+<h1 id="configurar-la-base-de-dades-en-mysql">Configurar la base de dades en MySQL</h1>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">ysql</span><span class="o">&gt;</span> <span class="n">create</span> <span class="n">database</span> <span class="n">library_development</span><span class="p">;</span>
+<span class="no">Query</span> <span class="no">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mo">01</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">grant</span> <span class="n">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">library_development</span><span class="p">.</span><span class="nf">*</span>
+<span class="n">to</span> <span class="s1">'root'</span><span class="err">@</span><span class="s1">'localhost'</span> <span class="n">identified</span> <span class="n">by</span> <span class="s1">'password'</span><span class="p">;</span>
+<span class="no">Query</span> <span class="no">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mo">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="no">FLUSH</span> <span class="no">PRIVILEGES</span><span class="p">;</span>
+<span class="no">Query</span> <span class="no">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mo">00</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h1 id="configurar-databaseyml">Configurar database.yml</h1>
+
+<p><code class="highlighter-rouge">dtabase.yml</code> roman a <code class="highlighter-rouge">library/config</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="ss">development:
+   adapter: </span><span class="n">mysql</span>
+   <span class="ss">database: </span><span class="n">library_development</span>
+   <span class="ss">username: </span><span class="n">root</span>
+   <span class="ss">password: </span><span class="p">[</span><span class="n">password</span><span class="p">]</span>
+   <span class="ss">host: </span><span class="n">localhost</span>
+	
+<span class="ss">test:
+   adapter: </span><span class="n">mysql</span>
+   <span class="ss">database: </span><span class="n">library_test</span>
+   <span class="ss">username: </span><span class="n">root</span>
+   <span class="ss">password: </span><span class="p">[</span><span class="n">password</span><span class="p">]</span>
+   <span class="ss">host: </span><span class="n">localhost</span>
+   
+<span class="ss">production:
+   adapter: </span><span class="n">mysql</span>
+   <span class="ss">database: </span><span class="n">library_production</span>
+   <span class="ss">username: </span><span class="n">root</span>
+   <span class="ss">password: </span><span class="p">[</span><span class="n">password</span><span class="p">]</span>
+   <span class="ss">host: </span><span class="n">localhost</span>
+</code></pre>
+</div>
+
+<h1 id="configurar-la-base-de-date-per-a-postgresql">Configurar la base de date per a PostgreSQL</h1>
+
+<p>Creem l’usuari:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">createuser</span> <span class="n">rubyuser</span> <span class="o">-</span><span class="n">s</span>
+</code></pre>
+</div>
+
+<p>Elegim un password:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span>
+
+<span class="n">postgres</span><span class="o">=</span><span class="c1"># \password rubyuser</span>
+</code></pre>
+</div>
+
+<p>Creem una base de dades de desenvolupament:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">postgres</span><span class="o">=</span><span class="c1"># CREATE DATABASE library_development OWNER rubyuser;</span>
+
+<span class="no">CREATE</span> <span class="no">DATABASE</span>
+</code></pre>
+</div>
+
+<p>Creem una base de dades de producció:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">postgres</span><span class="o">=</span><span class="c1"># CREATE DATABASE library_development OWNER rubyuser;</span>
+
+<span class="no">CREATE</span> <span class="no">DATABASE</span>
+</code></pre>
+</div>
+
+<p>Creem la base de dades de tesruby```ruby
+postgres=# CREATE DATABASE library_test OWNER rubyuser;</p>
+
+<p>CREATE DATABASE</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+Per tal de tancar PostgreSQL cal presionar `Ctrl + D`.
+
+# Configurar database.yml
+
+Trobarem aquest arxiu ací: `library/config`.
+
+Contindrà aquesta informació:
+
+```ruby
+default: &amp;default
+   adapter: postgresql
+   encoding: unicode
+
+development:
+   adapter: postgresql
+   encoding: unicode
+   database: library_development
+   username: rubyuser
+   password: &lt;Password for rubyuser&gt;
+
+test:
+   adapter: postgresql
+   encoding: unicode
+   database: library_test
+   username: rubyuser
+   password: &lt;Password for rubyuser&gt;
+
+production:
+   adapter: postgresql
+   encoding: unicode
+   database: library_production
+   username: rubyuser
+   password: &lt;Password for rubyuser&gt;
+</code></pre>
+</div>
+
+<p>Font: <a href="https://www.tutorialspoint.com/ruby-on-rails/rails-database-setup.htm">Tutorials Point Rails</a></p>
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

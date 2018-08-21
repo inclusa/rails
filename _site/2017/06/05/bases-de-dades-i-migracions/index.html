@@ -28,7 +28,7 @@
   <li><code class="highlighter-rouge">production:</code> =&gt; <code class="highlighter-rouge">database: db/test.sqlite3</code>.</li>
 </ul>
 
-<p>Cada vegada que executem el comandament <code class="highlighter-rouge">rake</code> las base de dades de <code class="highlighter-rouge">test</code> es ba a borrar. Aquesta és la raó per la qual <strong>mai al nomenar de la mateixa forma totes les bases de dades</strong>. Cada base de dades ha de tenir un nom diferent.</p>
+<p>Cada vegada que executem el comandament <code class="highlighter-rouge">rake</code> las base de dades de <code class="highlighter-rouge">test</code> es va a borrar. Aquesta és la raó per la qual <strong>mai al nomenar de la mateixa forma totes les bases de dades</strong>. Cada base de dades ha de tenir un nom diferent.</p>
 
 <p>En cas de voler utilizar altra base de dades, per exemple, <code class="highlighter-rouge">mysql2</code> caldrà comentar la gema <code class="highlighter-rouge">gem 'sqlite3'</code> i escriure <code class="highlighter-rouge">gem 'mysql2'</code>. En cas de voler córrer-lo en <strong>Heroku</strong> caldrà posar <code class="highlighter-rouge">gem 'postgresql'</code>, ja que és la base de dades que utilitza.</p>
 

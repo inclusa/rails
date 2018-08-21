@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">18 Controladors</h2>
+    <p class="post-meta">2018-08-13</p>
+    <p>Els controladors de Rails són el centre lògic de la teua aplicació. Coordina les interaccions entre l’usuari, les vistes i el model. A més té altres serveis:</p>
+
+<ul>
+  <li>És responsable d’enrutar les respostes externes a les accions internet. A més utilitza URLs molt bé.</li>
+  <li>Gestiona la caché, amb la qual pot donar ordres a efectives per a l’arranc de les aplicacions.</li>
+  <li>Gestiona els mòduls d’ajuda, amb els quals s’extenen les capacitats de les plantilles de les vistes sense tornar a generar aquest codi.</li>
+  <li>Gestiona sesions, dóna usuaris la impressió d’interaccionar amb les aplicacions.</li>
+</ul>
+
+<p>El procés de cració d’un controlador és molt fàcil, i és similar al procés en el què hem creat el model. Es fa així:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rails</span> <span class="n">generate</span> <span class="n">controller</span> <span class="no">Book</span>
+</code></pre>
+</div>
+
+<p>Al tant, utililitzem la paraula <code class="highlighter-rouge">Book</code> en <strong>majúscula</strong> i en <strong>singular</strong>. Aquest és el procediment per a crear controladors.</p>
+
+<p>Es creen a aquesta ruta <code class="highlighter-rouge">àpp/controllers/book_controller.rb</code>.</p>
+
+<p>Podem observar el seu contingut:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BookController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>El controlador hereta de <code class="highlighter-rouge">ApplicationController</code>, el qual es altre arxiu de del directori de controladors: <code class="highlighter-rouge">application.rb</code>.</p>
+
+<p><code class="highlighter-rouge">ApplicationController</code> conté el codi que pot ser executat pels teus controladors i heratat per Rails <code class="highlighter-rouge">ActionController::base</code> class.</p>
+
+<p>No necessites preocupar-te per <code class="highlighter-rouge">ApplicationController</code></p>
+
+<p>No necessiteu preocupar-vos per l’<code class="highlighter-rouge">ApplicationController</code> fins ara, així que només definirem uns quants mètodes en book_controller.rb. Segons el vostre requisit, podeu definir qualsevol quantitat de funcions en aquest fitxer.</p>
+
+<p>Modifiqueu el fitxer per veure’l seguit i deseu els canvis. Tingueu en compte que us pertoca el nom que voleu donar a aquests mètodes, però és millor donar noms rellevants.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BookController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+   <span class="k">def</span> <span class="nf">list</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">show</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">new</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">create</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">edit</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">update</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">delete</span>
+   <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Ara implementarem tots els metods un per un.</p>
+
+<h1 id="implementant-el-mètode-list">Implementant el mètode list</h1>
+
+<p>El mètode de llista us proporciona una llista de tots els llibres a la base de dades. Aquesta funcionalitat s’aconseguirà mitjançant les següents línies de codi. Editeu les línies següents al fitxer <code class="highlighter-rouge">book_controller.rb</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">list</span>
+    <span class="vi">@books</span> <span class="o">=</span> <span class="no">Books</span><span class="p">.</span><span class="nf">all</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">@books = Book.all</code> en el mètode list li diu a Rails que busque llibres en la taula i en el magatzem en cada fila i cerque l’objecte instància <code class="highlighter-rouge">@books</code>.</p>
+
+<h1 id="implementant-el-mètode-show">Implementant el mètode show</h1>
+
+<p>El mètode Show mostra només més detalls en un únic llibre. Aquesta funcionalitat s’aconseguirà mitjançant les següents línies de codi.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show</span>
+    <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+<p>El mètode <code class="highlighter-rouge">show</code> de <code class="highlighter-rouge">@book = Book.findparams[:id]</code> crida <strong>Rails</strong> per buscar un sol llibre el qual té definit l’<code class="highlighter-rouge">ìd</code>en els <code class="highlighter-rouge">params[:id]</code>.</p>
+
+<p>Els paràmetres objecte estan continguts en eixes</p>
+
+<p>Els paràmetres objete són un contenidor que permet passar valors entre trucades de mètode. Per exemple, quan es troba a la pàgina anomenada pel mètode de la llista, podeu fer clic a un enllaç per a un llibre específic i passar l’<code class="highlighter-rouge">id</code>  d’aquest llibre a través de l’objecte params perquè el programa pugui trobar el llibre específic.</p>
+
+<h1 id="implementant-el-nou-mètode">Implementant el nou mètode</h1>
+
+<p>El nou mètode permet a Rails saber que crearà un nou objecte. Per tant, afegiu el codi següent en aquest mètode.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+    <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subjects</span><span class="p">.</span><span class="nf">all</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>El mètode anterior es dirà quan mostrarà una pàgina a l’usuari per fer-se càrrec de l’usuari. Aquí la segona línia agafa tots els temes de la base de dades i els posa en una matriu anomenada <code class="highlighter-rouge">@subjects</code>.</p>
+
+<h1 id="implementant-el-mètode-creat">Implementant el mètode creat</h1>
+
+<p>Un cop hagueu introduït l’usuari amb un formulari HTML, és hora de crear un registre a la base de dades. Per aconseguir-ho, editeu el mètode create a <code class="highlighter-rouge">book_controller.rb</code> per fer coincidir el següent:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create</span>
+   <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">book_params</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">save</span>
+      <span class="n">redirect_to</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'list'</span>
+   <span class="k">else</span>
+      <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">all</span>
+      <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'new'</span>
+   <span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">book_params</span>
+   <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:books</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:subject_id</span><span class="p">,</span> <span class="ss">:description</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>La primera línia crea una nova variable d’instància anomenada <code class="highlighter-rouge">@book</code> que conté un objecte <code class="highlighter-rouge">Book</code> construït a partir de les dades, l’usuari ha enviat. El mètode <code class="highlighter-rouge">book_params</code> s’utilitza per recollir tots els camps de l’objecte <code class="highlighter-rouge">:books</code>. Les dades es van passar del nou mètode per crear l’ús dels paràmetres de l’objecte.</p>
+
+<p>La següent línia és una instrucció condicional que redirigeix l’usuari al mètode de llista si l’objecte es guarda correctament a la base de dades. Si no es guarda, l’usuari s’envia de nou al nou mètode. El mètode <code class="highlighter-rouge">redirect_to</code> és similar a realitzar una actualització meta en una pàgina web: automàticament us envia a la vostra destinació sense cap interacció de l’usuari.</p>
+
+<p>A continuació, <code class="highlighter-rouge">@subjects = Subject.all</code> és obligatori en cas que no deseu dades amb èxit i esdevingui un cas semblant a l’opció nova.</p>
+
+<h1 id="implementant-el-mètode-update">Implementant el mètode update</h1>
+
+<p>Aquest mètode es crida després del mètode d’edició, quan l’usuari modifica les dades i vol actualitzar els canvis a la base de dades. El mètode d’actualització és similar al mètode de creació i s’utilitzarà per actualitzar llibres existents a la base de dades.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">update</span>
+   <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+
+   <span class="k">if</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">(</span><span class="n">book_param</span><span class="p">)</span>
+      <span class="n">redirect_to</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'show'</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="vi">@book</span>
+   <span class="k">else</span>
+      <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">all</span>
+      <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'edit'</span>
+   <span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">book_param</span>
+   <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:book</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:subject_id</span><span class="p">,</span> <span class="ss">:description</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>El mètode <code class="highlighter-rouge">update_attributes</code> és similar al mètode guardat usat per crear, però en lloc de crear una nova fila a la base de dades, sobreescriu els atributs de la fila existent.</p>
+
+<p>A continuació, <code class="highlighter-rouge">@subjects = Subject.all</code> és necessària la línia en cas que no guardi correctament les dades, es torna similar a l’opció d’edició.</p>
+
+<h1 id="implementant-el-mètode-delete">Implementant el mètode delete</h1>
+
+<p>Si voleu eliminar un registre de la base de dades, usareu aquest mètode. Implementeu aquest mètode de la manera següent.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">delete</span>
+   <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]).</span><span class="nf">destroy</span>
+   <span class="n">redirect_to</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'list'</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>La primera línia troba la classificació basada en el paràmetre passat a través dels paràmetres de l’objecte i, a continuació, el suprimeix utilitzant el mètode de destrucció. La segona línia redirigeix l’usuari al mètode de la llista usant una trucada redirigida.</p>
+
+<h1 id="mètodes-adicionals-per-visualizar-subjects">Mètodes adicionals per visualizar Subjects</h1>
+
+<p>Assumeixi que voleu proporcionar una facilitat als seus usuaris per explorar tots els llibres en funció d’un tema determinat. Per tant, podeu crear un mètode dins de <code class="highlighter-rouge">book_controller.rb</code> per mostrar tots els temes. Assumeixi que el nom del mètode és <code class="highlighter-rouge">show_subjects</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show_subjects</span>
+   <span class="vi">@subject</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Finalment l’arxiu <code class="highlighter-rouge">book_controller.rb</code> es vorà així:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+
+   <span class="k">def</span> <span class="nf">list</span>
+      <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">show</span>
+      <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+   <span class="k">end</span>
+  
+   <span class="k">def</span> <span class="nf">new</span>
+      <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+      <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">all</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">book_params</span>
+      <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:books</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:subject_id</span><span class="p">,</span> <span class="ss">:description</span><span class="p">)</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">create</span>
+      <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">book_params</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">save</span>
+         <span class="n">redirect_to</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'list'</span>
+      <span class="k">else</span>
+         <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">all</span>
+         <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'new'</span>
+      <span class="k">end</span>
+   <span class="k">end</span>
+   
+   <span class="k">def</span> <span class="nf">edit</span>
+      <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+      <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">all</span>
+   <span class="k">end</span>
+   
+   <span class="k">def</span> <span class="nf">book_param</span>
+      <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:book</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:subject_id</span><span class="p">,</span> <span class="ss">:description</span><span class="p">)</span>
+   <span class="k">end</span>
+   
+   <span class="k">def</span> <span class="nf">update</span>
+      <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+      
+      <span class="k">if</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">(</span><span class="n">book_param</span><span class="p">)</span>
+         <span class="n">redirect_to</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'show'</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="vi">@book</span>
+      <span class="k">else</span>
+         <span class="vi">@subjects</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">all</span>
+         <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'edit'</span>
+      <span class="k">end</span>
+   <span class="k">end</span>
+   
+   <span class="k">def</span> <span class="nf">delete</span>
+      <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]).</span><span class="nf">destroy</span>
+      <span class="n">redirect_to</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'list'</span>
+   <span class="k">end</span>
+   
+   <span class="k">def</span> <span class="nf">show_subjects</span>
+      <span class="vi">@subject</span> <span class="o">=</span> <span class="no">Subject</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+   <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Font: <a href="https://www.tutorialspoint.com/ruby-on-rails/rails-controllers.htm">Controladors</a></p>
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

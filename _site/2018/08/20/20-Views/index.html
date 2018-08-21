@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/rails/css/main.css">
+    <title>Rails</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/rails/">Rails</a></h1>
+            <nav class="site-nav">
+                <a href="/rails/about/" class="">About</a>
+            </nav>
+        </header>
+        <article class="post">
+    <h2 class="post-header">20 Views</h2>
+    <p class="post-meta">2018-08-20</p>
+    <p>Un Rails View és un programa EFb que comparte datos amb controladors a través de variablea accessibles.</p>
+
+<p>Si mires en el directori de les llibreries d’aplicacinos <code class="highlighter-rouge">app/views</code>, voràs un subdirectori per cada controlador, nosaltres hem creat: <code class="highlighter-rouge">book</code>. Cada un d’aquest directore ha estat creat automàticament quan el controlador va estar crat amb un script de generació.</p>
+
+<p>Rails li informa que necessita crear l’arxiu de vista per a acada nou mètode. Cada mètode que defina el controlador necesssita tenir un arxiu <code class="highlighter-rouge">erb</code> corresponent, amb el mateix nom que el mètode, per a mostrar les dades que el mètode està recopilant.</p>
+
+<p>Així crea arxius de vista per tots els mètodes que nosaltres definim en l’arxiu <code class="highlighter-rouge">book_controller.rb</code>. Mentre executem estes vistes, simultàniament verifica que estes accions siguen aplicables dins de la base de dades o no.</p>
+
+<h1 id="creant-arxius-de-vista-per-a-la-llista-de-mètodes">Creant arxius de vista per a la llista de mètodes</h1>
+
+<p>Crea un arxiu anomenat <code class="highlighter-rouge">list.html.erb</code> usant el teu editor de text favorit i guarda’l a <code class="highlighter-rouge">app/views/book</code>. Després crea i guarda l’arxiu, refresca el teu navegador. Veuràs una pàgina en blanc, revisa les lletres de l’arxiu i fes això exactament amb el teu mètode de controlador.</p>
+
+<p>Ara mira el contingut actual. Llig el codi dins de <code class="highlighter-rouge">list.html.erb</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">% if </span><span class="vi">@books</span><span class="p">.</span><span class="nf">blank?</span> <span class="sx">%&gt;
+&lt;p&gt;</span><span class="no">There</span> <span class="n">are</span> <span class="n">not</span> <span class="n">any</span> <span class="n">books</span> <span class="n">currently</span> <span class="k">in</span> <span class="n">the</span> <span class="nb">system</span><span class="p">.</span><span class="nf">&lt;</span><span class="o">/</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sx">% else </span><span class="o">%&gt;</span>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">These</span> <span class="n">are</span> <span class="n">the</span> <span class="n">current</span> <span class="n">books</span> <span class="k">in</span> <span class="n">our</span> <span class="nb">system</span><span class="o">&lt;</span><span class="sr">/p&gt;
+
+&lt;ul id = "books"&gt;
+   &lt;% @books.each do |c| %&gt;
+   &lt;li&gt;&lt;%= link_to c.title, {:action =&gt; 'show', :id =&gt; c.id} -%&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;
+
+&lt;% end %&gt;
+&lt;p&gt;&lt;%= link_to "Add new Book", {:action =&gt; 'new' }%&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<p>El codi ha estat executat està revisat si array <code class="highlighter-rouge">@books</code> és un objecte en ell. El mètode <code class="highlighter-rouge">.blank?</code> retorna <code class="highlighter-rouge">true</code> si el array està buit, i <code class="highlighter-rouge">fals</code> si conté algun objecte. L’objecte <code class="highlighter-rouge">@books</code> va estar creat en el controlador dins del mètode.</p>
+
+<p>El codi <code class="highlighter-rouge">&lt;%=%&gt;</code> és una etiqueta, un mètode per cridar <code class="highlighter-rouge">link_to</code>. El primer paràmetre <code class="highlighter-rouge">link_to</code> és que el text es veja entre el tag <code class="highlighter-rouge">&lt;a&gt;</code>. El segon paràmetre és que l’acció es crida quan el link és clicat. En aquest cas, veiem el mètode. El paràmetre final és l’<code class="highlighter-rouge">id</code> del llibre que és passat via el paràmetre objecte.</p>
+
+<p>Ara, refresca en el teu navegador i obtindràs aquesta captura:</p>
+
+<p><img src="https://www.tutorialspoint.com/ruby-on-rails/images/no-book-message.gif" alt="imatge 01" /></p>
+<h1 id="creant-larxiu-de-vista-per-al-nou-mètode">Creant l’arxiu de vista per al nou mètode</h1>
+
+<p>Per ara, nosaltres no tenim llibre en la nostra biblioteca. Hem creat uns pocs llibres en el sistema. Així, que anem a veure correspondència al nou mètode definit <code class="highlighter-rouge">book_controller.rb</code></p>
+
+<p>Creem un arxiu anomenat <code class="highlighter-rouge">new.html.erb</code> què usem amb el nostre l’editor de text favorit el guardem en <code class="highlighter-rouge">app/views/book</code>. Afegim seguiment al codi de l’arxiu <code class="highlighter-rouge">new.html.erb</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Add</span> <span class="kp">new</span> <span class="n">book</span><span class="o">&lt;</span><span class="sr">/h1&gt;
+
+&lt;%= form_tag :action =&gt; 'create' do %&gt;
+&lt;p&gt;&lt;label for = "book_title"&gt;Title&lt;/</span><span class="n">label</span><span class="o">&gt;</span><span class="p">:</span>
+
+<span class="o">&lt;</span><span class="sx">%= text_field 'books', 'title' %&gt;&lt;/p&gt;
+&lt;p&gt;&lt;label for =</span> <span class="s2">"book_price"</span><span class="o">&gt;</span><span class="no">Price</span><span class="o">&lt;</span><span class="sr">/label&gt;:
+
+&lt;%= text_field 'books', 'price' %&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;</span><span class="n">label</span> <span class="k">for</span> <span class="o">=</span> <span class="s2">"book_subject_id"</span><span class="o">&gt;</span><span class="no">Subject</span><span class="o">&lt;</span><span class="sr">/label&gt;:
+
+&lt;%= collection_select(:books, :subject_id, @subjects, :id, :name, prompt: true) %&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;</span><span class="n">label</span> <span class="k">for</span> <span class="o">=</span> <span class="s2">"book_description"</span><span class="o">&gt;</span><span class="no">Description</span><span class="o">&lt;</span><span class="sr">/label&gt;&lt;br/</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="sx">%= text_area 'books', 'description' %&gt;&lt;/p&gt;
+&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">"Create"</span> <span class="o">%&gt;</span>
+
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">-</span><span class="sx">%&gt;
+&lt;%= link_to 'Back', {:action =&gt;</span> <span class="s1">'list'</span><span class="p">}</span> <span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+<p>Ací el mètode <code class="highlighter-rouge">form_tag</code> interpreta el codi Ruby dins de un HTML <code class="highlighter-rouge">&lt;form&gt;</code> tag usant tota la informació necessària. Aquest tag, per exemple, ens dóna HTML:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">form</span> <span class="n">action</span> <span class="o">=</span> <span class="s2">"/book/create"</span> <span class="nb">method</span> <span class="o">=</span> <span class="s2">"post"</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<p>El promer mètode és <code class="highlighter-rouge">text_field</code> el qual ens dóna el camp de text <code class="highlighter-rouge">&lt;input&gt;</code>. Els paràmetres per a <code class="highlighter-rouge">text_field</code> són objectes i nombres de camp. En aquest cas, l’objecte és <strong>book</strong> i el nom és <strong>title</strong>.</p>
+
+<p>El mètode Rails crida <code class="highlighter-rouge">collection_sellect</code>, crea un menú HTML, el qual construeix un array, com a <code class="highlighter-rouge">@books</code>.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">:books</code>: Objecte que manipulem.</li>
+  <li><code class="highlighter-rouge">subject_id</code>: Camp quan book està guardat.</li>
+  <li><code class="highlighter-rouge">@books</code>: Array amb el qual treballes.</li>
+  <li><code class="highlighter-rouge">id</code>: Valor guardat en la base de dades. En termes d’HTML, esta és <code class="highlighter-rouge">&lt;option&gt;</code>, la etiqueta valor del paràmetre.</li>
+  <li><code class="highlighter-rouge">:name</code>: És l’eixida que els usuaris veuen en el menú. Aquest valor està entre el tag <code class="highlighter-rouge">&lt;option&gt;</code>.</li>
+</ul>
+
+<p>La propera etiqueta usada és <code class="highlighter-rouge">sumit_tag</code>, la qual és un botó <code class="highlighter-rouge">&lt;input&gt;</code>que envia al formulari. Finalment, hi ha <code class="highlighter-rouge">end</code>, mètode que simplifica la traducció dins de <code class="highlighter-rouge">&lt;/form&gt;</code>.</p>
+
+<p>Anem amb el navegador a visitar <strong>http://localhost:3000/book/new</strong>. El qual ens donarà la següent captura:</p>
+
+<p><img src="https://www.tutorialspoint.com/ruby-on-rails/images/new-book.gif" alt="image 02" /></p>
+
+
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

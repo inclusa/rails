@@ -15,7 +15,7 @@
             </nav>
         </header>
         <article class="post">
-    <h2 class="post-header">02 Primera aplicacio</h2>
+    <h2 class="post-header">02 Primera aplicació</h2>
     <p class="post-meta">2017-06-01</p>
     <p>Rails bé amb un grup important de generadors de codi.</p>
 
@@ -23,9 +23,31 @@
 </code></pre>
 </div>
 
+<p>Per defecte es crea una base de dades a <code class="highlighter-rouge">sqlite</code>, en cas que vullguem vincular aquesta base de dades a altre servei de base de dades ho farem així:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rails new projecte --database=postgres
+rails new projecte -d=postgres
+</code></pre>
+</div>
+
+<p>Podem crear una base de dades per defecte així:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rails db:drop db:create db:migrate
+</code></pre>
+</div>
+
+<p>Explicació:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">drop</code>: elimina la base de dades que hi havia.</li>
+  <li><code class="highlighter-rouge">create</code>: crea una nova base de dades.</li>
+  <li><code class="highlighter-rouge">migrate</code>: migra la base de dades.</li>
+</ul>
+
 <p>Crea diferents arxius i instal·la gemes necessàries.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>rails server
+rails s
 </code></pre>
 </div>
 
@@ -43,7 +65,9 @@
 
 <p>Generem un controlador anomenat <code class="highlighter-rouge">welcome</code> que va a tenir un mètode anomenat <code class="highlighter-rouge">index</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails generate controller welcome index
+<div class="highlighter-rouge"><pre class="highlight"><code>rails generate controller welcome index &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+rails g controller welcome index =======
+rails g controller wellcom index &gt;&gt;&gt;&gt;&gt;&gt;&gt; 12d0c05426031b08a72fa8ae97001de13f8846a0
 </code></pre>
 </div>
 
@@ -62,7 +86,7 @@
 <p>També es genera un arxiu a la carpeta <code class="highlighter-rouge">app/view/welcome/</code> anomenat <code class="highlighter-rouge">index.html.erb</code>:</p>
 
 <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Welcome</span><span class="c1">#index&lt;/h1&gt;</span>
-<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">find</span> <span class="n">me</span> <span class="k">in</span> <span class="n">app</span><span class="o">/</span><span class="n">viers</span><span class="o">/</span><span class="n">welcome</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">erb</span><span class="o">&lt;</span><span class="sr">/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">find</span> <span class="n">me</span> <span class="k">in</span> <span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">welcome</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">erb</span><span class="o">&lt;</span><span class="sr">/p&gt;
 </span></code></pre>
 </div>
 <p>Podem posar en el navegador:</p>
