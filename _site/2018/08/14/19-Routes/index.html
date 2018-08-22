@@ -21,13 +21,12 @@
 
 <p>Penseu a crear rutes com a dibuixar un mapa per a les vostres sol·licituds. El mapa els indica on anar basant-se en un patró predefinit.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
    <span class="no">Pattern</span> <span class="mi">1</span> <span class="n">tells</span> <span class="n">some</span> <span class="n">request</span> <span class="n">to</span> <span class="n">go</span> <span class="n">to</span> <span class="n">one</span> <span class="n">place</span>
    <span class="no">Pattern</span> <span class="mi">2</span> <span class="n">tell</span> <span class="n">them</span> <span class="n">to</span> <span class="n">go</span> <span class="n">to</span> <span class="n">another</span>
-   <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-<span class="nf">end</span>
-</code></pre>
-</div>
+   <span class="o">...</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
 <h1 id="example">Example</h1>
 
@@ -35,7 +34,7 @@
 
 <p>Obriu el fitxer <code class="highlighter-rouge">routes.rb</code> al directori library <code class="highlighter-rouge">/config/</code> i editeu-lo amb el següent contingut.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
    <span class="n">get</span> <span class="s1">'book/list'</span>
    <span class="n">get</span> <span class="s1">'book/new'</span>
    <span class="n">post</span> <span class="s1">'book/create'</span>
@@ -47,16 +46,14 @@
    <span class="n">get</span> <span class="s1">'book/update'</span>
    <span class="n">get</span> <span class="s1">'book/show_subjects'</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>El fitxer <code class="highlighter-rouge">routes.rb</code> defineix les accions disponibles a les aplicacions i el tipus d’acció, com ara obtenir, publicar i patxar.</p>
 
 <p>Utilitzeu l’ordre següent per incloure totes les rutes definides, que són útils per fer el seguiment dels problemes d’enrutament a la vostra aplicació o donar-vos una bona visió general de les URL en una aplicació amb la qual intenteu familiaritzar-vos.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">routes</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rake</span> <span class="n">routes</span>
+</code></pre></div></div>
 
 <p>Font: <a href="https://www.tutorialspoint.com/ruby-on-rails/rails-routes.htm">Routes</a></p>
 

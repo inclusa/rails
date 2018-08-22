@@ -21,21 +21,18 @@
 
 <p>Visualitzem generadors:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails g
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g
+</code></pre></div></div>
 
 <p>Generem el model:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails g model image description:string likes_counter:integer
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g model image description:string likes_counter:integer
+</code></pre></div></div>
 
 <p>o també:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails g model image description likes_counter:integer
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g model image description likes_counter:integer
+</code></pre></div></div>
 
 <p>El nom del model ha d’estar en singular i en anglés, en aqués cas <code class="highlighter-rouge">image</code>, així Rails pluralitza aquesta paraula i crea una taula anomenada <code class="highlighter-rouge">images</code>.</p>
 
@@ -46,9 +43,8 @@
 
 <p>Una migració és una <code class="highlighter-rouge">DSL</code> escrita en Ruby, la qual modifica l’esquema  de la base de dades sense necessitat d’escriure llenguatge <strong>SQL</strong>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails db:drop dp:create db:migrate
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails db:drop dp:create db:migrate
+</code></pre></div></div>
 
 <ul>
   <li><code class="highlighter-rouge">drop</code>: eliminem base de dades amb el mateix nom</li>

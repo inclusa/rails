@@ -21,12 +21,11 @@
 
 <p>Té dues rutes prefefinides:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
   <span class="n">get</span> <span class="s1">'welcome/index'</span>
 
   <span class="n">root</span> <span class="s1">'welcome#index'</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Nosaltres hem definit la ruta <code class="highlighter-rouge">welcome#index</code>.</p>
 
@@ -34,13 +33,12 @@
 
 <p>Verbs http</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET
 POST
 PATCH
 PUT
 DELETE
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Cal que estiga el verb i la ruta.</p>
 
@@ -48,7 +46,7 @@ DELETE
 
 <p>Definim les següents rutes:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>resources :articles
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resources :articles
   get "/articles"
   post "/articles"
   delete "/articles"
@@ -57,20 +55,18 @@ DELETE
   get "/articles/:id/edit"
   get patch "/articles/:id"
   get put "/articles/:id"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Aquestes rutes les deixarem comentades.</p>
 
 <p>Explicarem la sintaxi amb un exemple:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
 
     <span class="n">get</span> <span class="s1">'prueba'</span><span class="p">,</span> <span class="n">to</span> <span class="s1">'prueba#metodoprueba'</span>
 
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Explicació:</p>
 
@@ -81,26 +77,23 @@ DELETE
 
 <p>Així, caldrà crear primer el controlador per tal que no ens dóne una errada:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails generate controller prueba
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate controller prueba
 rails g controller prueba
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Amb la <code class="highlighter-rouge">g</code> soles podem evitar escriure tota la paraula.</p>
 
 <p>Ara caldrà definir el controlador editant-lo, per fer-ho caldrà anar a la carpeta controller i editar el controlador <code class="highlighter-rouge">prueba</code>:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PruebaController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PruebaController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
     <span class="k">def</span> <span class="nf">metodoprueba</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Seguidament caldrà generar la vista a aquest arxiu <code class="highlighter-rouge">/vista/metodoprueba.html.erb</code> amb aquest contingut:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Prueba<span class="nt">&lt;/p&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Prueba<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
 
 
     

@@ -19,21 +19,19 @@
     <p class="post-meta">2017-06-03</p>
     <p>Anem a utilitzar el primer generador de Ruby on Rails</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails generate model Article title:strings body:text visit_count:integer 
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate model Article title:strings body:text visit_count:integer 
+</code></pre></div></div>
 
 <p>Output</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  Running via Spring preloader in process 25314
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Running via Spring preloader in process 25314
   invoke  active_record
   create    db/migrate/20170603024931_create_articles.rb
   create    app/models/article.rb
   invoke    test_unit
   create      test/models/article_test.rb
   create      test/fixtures/articles.yml
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Els generadors es criden amb el nom <code class="highlighter-rouge">generate</code> + <code class="highlighter-rouge">nom_del_model_en_singular</code>.</p>
 

@@ -23,31 +23,27 @@
 
 <p>El primer que cal fer és configurar l’arxiu de rutes:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="sr">/config/</span><span class="n">routes</span><span class="p">.</span><span class="nf">rb</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sr">/config/</span><span class="n">routes</span><span class="p">.</span><span class="nf">rb</span>
+</code></pre></div></div>
 
 <p>Cal fer una ruta rest:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>resources :images
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resources :images
+</code></pre></div></div>
 
 <p>El recurs es diu <code class="highlighter-rouge">images</code>.</p>
 
 <p>Especifiquem</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails routes
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails routes
+</code></pre></div></div>
 
 <p>Ens mostra les rutes que anem a poder utilitzar. Això és interessant per ésser conscient tant de les <strong>urls</strong> com dels serveis que podem posar en marxa a través del controlador.</p>
 
 <p>Anem a crea un controlador:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails g controller Images
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g controller Images
+</code></pre></div></div>
 
 <p>En aquest cas <code class="highlighter-rouge">Images</code> està en plural.</p>
 
@@ -55,13 +51,12 @@
 
 <p>Deixarem aquest arxiu així:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ImagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ImagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 
       <span class="k">def</span> <span class="nf">new</span>
       <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>D’aquesta manera podrem crear una nova imatge.</p>
 

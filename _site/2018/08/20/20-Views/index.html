@@ -31,7 +31,7 @@
 
 <p>Ara mira el contingut actual. Llig el codi dins de <code class="highlighter-rouge">list.html.erb</code>.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">% if </span><span class="vi">@books</span><span class="p">.</span><span class="nf">blank?</span> <span class="sx">%&gt;
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">% if </span><span class="vi">@books</span><span class="p">.</span><span class="nf">blank?</span> <span class="sx">%&gt;
 &lt;p&gt;</span><span class="no">There</span> <span class="n">are</span> <span class="n">not</span> <span class="n">any</span> <span class="n">books</span> <span class="n">currently</span> <span class="k">in</span> <span class="n">the</span> <span class="nb">system</span><span class="p">.</span><span class="nf">&lt;</span><span class="o">/</span><span class="nb">p</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="sx">% else </span><span class="o">%&gt;</span>
 <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">These</span> <span class="n">are</span> <span class="n">the</span> <span class="n">current</span> <span class="n">books</span> <span class="k">in</span> <span class="n">our</span> <span class="nb">system</span><span class="o">&lt;</span><span class="sr">/p&gt;
@@ -44,8 +44,7 @@
 
 &lt;% end %&gt;
 &lt;p&gt;&lt;%= link_to "Add new Book", {:action =&gt; 'new' }%&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>El codi ha estat executat està revisat si array <code class="highlighter-rouge">@books</code> és un objecte en ell. El mètode <code class="highlighter-rouge">.blank?</code> retorna <code class="highlighter-rouge">true</code> si el array està buit, i <code class="highlighter-rouge">fals</code> si conté algun objecte. L’objecte <code class="highlighter-rouge">@books</code> va estar creat en el controlador dins del mètode.</p>
 
@@ -60,7 +59,7 @@
 
 <p>Creem un arxiu anomenat <code class="highlighter-rouge">new.html.erb</code> què usem amb el nostre l’editor de text favorit el guardem en <code class="highlighter-rouge">app/views/book</code>. Afegim seguiment al codi de l’arxiu <code class="highlighter-rouge">new.html.erb</code>.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Add</span> <span class="kp">new</span> <span class="n">book</span><span class="o">&lt;</span><span class="sr">/h1&gt;
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Add</span> <span class="n">new</span> <span class="n">book</span><span class="o">&lt;</span><span class="sr">/h1&gt;
 
 &lt;%= form_tag :action =&gt; 'create' do %&gt;
 &lt;p&gt;&lt;label for = "book_title"&gt;Title&lt;/</span><span class="n">label</span><span class="o">&gt;</span><span class="p">:</span>
@@ -79,14 +78,12 @@
 
 <span class="o">&lt;</span><span class="sx">% end </span><span class="o">-</span><span class="sx">%&gt;
 &lt;%= link_to 'Back', {:action =&gt;</span> <span class="s1">'list'</span><span class="p">}</span> <span class="o">%&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Ací el mètode <code class="highlighter-rouge">form_tag</code> interpreta el codi Ruby dins de un HTML <code class="highlighter-rouge">&lt;form&gt;</code> tag usant tota la informació necessària. Aquest tag, per exemple, ens dóna HTML:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">form</span> <span class="n">action</span> <span class="o">=</span> <span class="s2">"/book/create"</span> <span class="nb">method</span> <span class="o">=</span> <span class="s2">"post"</span><span class="o">&gt;</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">form</span> <span class="n">action</span> <span class="o">=</span> <span class="s2">"/book/create"</span> <span class="nb">method</span> <span class="o">=</span> <span class="s2">"post"</span><span class="o">&gt;</span>
+</code></pre></div></div>
 
 <p>El promer mètode és <code class="highlighter-rouge">text_field</code> el qual ens dóna el camp de text <code class="highlighter-rouge">&lt;input&gt;</code>. Els paràmetres per a <code class="highlighter-rouge">text_field</code> són objectes i nombres de camp. En aquest cas, l’objecte és <strong>book</strong> i el nom és <strong>title</strong>.</p>
 
@@ -106,6 +103,34 @@
 
 <p><img src="https://www.tutorialspoint.com/ruby-on-rails/images/new-book.gif" alt="image 02" /></p>
 
+<p>Quan introduïm algunes dades en el formulari i cliquem el botó crear s’afegixen les dades dels camps.</p>
+
+<p>Quan cliquem el botó <code class="highlighter-rouge">crear</code>, cridem el mètode crear, el qual no necessita usar el mètode <code class="highlighter-rouge">list</code> o <code class="highlighter-rouge">new</code> per veure els resultats. Així, quan cliquem el botó <code class="highlighter-rouge">crear</code>, les dades s’enviaran satisfactòriament i es redireccionarà la lista de pàgina.</p>
+
+<h1 id="creant-una-view-file-per-a-show-method">Creant una View File per a show method</h1>
+
+<p>El mètode mostrarà el complet detall sobre algun llibre disponible en la llibreria. Crea un arxiu <code class="highlighter-rouge">show.html.erb</code> sota <code class="highlighter-rouge">app/views/book</code> con el codi:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;</span><span class="sx">%= @book.title %&gt;&lt;/h1&gt;
+
+&lt;p&gt;
+   &lt;strong&gt;Price: &lt;/strong&gt; $&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">price</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+   <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="no">Subject</span> <span class="ss">:&lt;</span><span class="o">/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="sx">%= @book.subject.name %&gt;&lt;br /&gt;
+   &lt;strong&gt;Created Date:&lt;/strong&gt; &lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">created_at</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+<span class="o">&lt;</span><span class="sr">/p&gt;
+
+&lt;p&gt;&lt;%= @book.description %&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">hr</span> <span class="sr">/&gt;
+
+&lt;%= link_to 'Back', {:action =&gt; 'list'} %&gt;
+</span></code></pre></div></div>
+
+<p>És la seva primera vegada que ha aprofitat al màxim les associacions, que permeten obtenir fàcilment dades d’objectes relacionats.</p>
+
+<p>El format utilitzat és @variable.relatedObject.column. En aquesta instància, podeu treure el valor del nom de l’assumpte a través de la variable @book mitjançant les associacions pertanyents. Si feu clic a qualsevol registre indicat, us mostrarà la següent pantalla.</p>
+
+<p>Font <a href="https://www.tutorialspoint.com/ruby-on-rails/rails-views.htm">Tutorials Point</a></p>
 
     
 </article>

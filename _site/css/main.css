@@ -106,8 +106,7 @@ td {
 
 pre {
   padding: 1.25rem;
-  overflow-x: auto;
-  background-color: #eef; }
+  overflow-x: auto; }
 
 code {
   font-family: 'Courier New',Consolas,monopace;

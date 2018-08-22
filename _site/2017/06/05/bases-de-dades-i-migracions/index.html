@@ -40,7 +40,7 @@
 
 <p>ATENCIÓ: no canviar de la configuració a partir d’ací si el que volem és deixar convigurat <code class="highlighter-rouge">sqlite3</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>development:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>development:
   adapter: mysql2
   username: root
   password:
@@ -49,22 +49,19 @@
   database: blog
   pool: 5
   timeout: 5000
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Ara iniciem el servidor per veure que no hi ha error:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails s
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails s
+</code></pre></div></div>
 
 <p>Ens dóna un error perquè no hem creat la base de dades.</p>
 
 <p>La creem amb el comandament:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rake db:create
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rake db:create
+</code></pre></div></div>
 
 <p>Li anem a dir a Rails <strong>sols vas a instal·lar sqlite3 quan tingues l’entorn de desenvolupament <code class="highlighter-rouge">test</code></strong>.</p>
 
@@ -72,11 +69,10 @@
 
 <p><strong>Codi modificat per configurar <code class="highlighter-rouge">mysql2</code></strong>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>group: test do
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>group: test do
   gem 'sqlite3'
 end
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Rails té tres entors:</p>
 
@@ -88,9 +84,8 @@ end
 
 <p>Tornem a alçar el server:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails s
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails s
+</code></pre></div></div>
 
 <p>Esperem un error: <code class="highlighter-rouge">PendingMigrationError</code>, també ens diu com solucionar-ho.</p>
 
@@ -106,17 +101,15 @@ end
 
 <p>Per executar la migració cal córrer el comandament:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+</code></pre></div></div>
 
 <p>En aquest cas el que fa és crear el que està en el mètode <code class="highlighter-rouge">change</code> que serà crear la tabla <code class="highlighter-rouge">articles</code>.</p>
 
 <p>Tornem a córrer el servidor:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rails s
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails s
+</code></pre></div></div>
 
 <p>Si actualitzem la pàgina no ens donen errades.</p>
 
@@ -124,18 +117,16 @@ end
 
 <p>Si ens equivoquem amb la taula o algun mètode existeix un comandament anomenat <code class="highlighter-rouge">rollback</code>:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:rollback</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:rollback</span>
+</code></pre></div></div>
 
 <p>Aquest mètode fa l’invers del mètode <code class="highlighter-rouge">change_table</code>, que és <code class="highlighter-rouge">role_table</code>.</p>
 
 <p>Caldria fer:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:up</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rake</span> <span class="n">db</span><span class="ss">:up</span>
 <span class="n">rake</span> <span class="ss">db: </span><span class="n">migrate</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Aquesta és la part que anomenàvem com una <strong>pila</strong>.</p>
 
@@ -145,15 +136,13 @@ end
 
 <p>Podem obrir la cònsola de Rails, és una cònsola especial on podem executar mètodes.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">rails</span> <span class="n">console</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">console</span>
+</code></pre></div></div>
 
 <p>Allí teclegem:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="ss">:B</span><span class="o">&gt;</span> <span class="no">Article</span><span class="p">.</span><span class="nf">all</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="ss">:B</span><span class="o">&gt;</span> <span class="no">Article</span><span class="p">.</span><span class="nf">all</span>
+</code></pre></div></div>
 
 <p>Ens torna informació buida perquè no tenim cap artícle.</p>
 
