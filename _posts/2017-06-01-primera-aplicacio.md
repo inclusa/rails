@@ -42,11 +42,11 @@ Tancar el server
 Generem un controlador anomenat `welcome` que va a tenir un mètode anomenat `index`.
 
     rails generate controller welcome index
-<<<<<<< HEAD
-    rails g controller welcome index
-=======
-    rails g controller wellcom index
->>>>>>> 12d0c05426031b08a72fa8ae97001de13f8846a0
+
+O bé:
+
+	rails g controller welcome index
+	
 
 Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.rb`:
 
@@ -89,3 +89,32 @@ Font: [CodigoFacilito Rails4](http://codigofacilito.com/videos/curso_de_ruby_on_
 
 
 
+### Altre procediment
+
+1. Crear projecte
+
+	rails new blog
+	
+2. Ens situem al directori
+
+	cd blog
+
+3. Crear un compte per als contactes
+
+	rails g scaffold contacte Nom:string Cognom: string Telèfon: string dataentrada:date
+
+4. Migrem la base de dades
+
+	rails db:migrate
+
+5. Llancem el servidor
+
+	rails s
+
+6. Cridem el servidor des del navegador
+
+	localhost:3000/contactes
+	
+Font: [Wikipedia.es] [1]
+
+	[1]: https://es.wikipedia.org/wiki/Ruby_on_Rails
