@@ -93,28 +93,37 @@ Font: [CodigoFacilito Rails4](http://codigofacilito.com/videos/curso_de_ruby_on_
 
 1. Crear projecte
 
-	rails new blog
-	
+```ruby
+rails new blog
+```
+
 2. Ens situem al directori
 
+```ruby
 	cd blog
+```
 
 3. Crear un compte per als contactes
 
+```ruby
 	rails g scaffold contacte Nom:string Cognom: string Telèfon: string dataentrada:date
+```
 
 4. Migrem la base de dades
 
+```ruby
 	rails db:migrate
-
+```
 5. Llancem el servidor
 
+```ruby
 	rails s
+```
 
 6. Cridem el servidor des del navegador
 
+```ruby
 	localhost:3000/contactes
-	
-Font: [Wikipedia.es] [1]
+```
 
-	[1]: https://es.wikipedia.org/wiki/Ruby_on_Rails
+Font: [Wikipedia.es](https://es.wikipedia.org/wiki/Ruby_on_Rails)
