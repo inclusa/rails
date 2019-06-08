@@ -9,17 +9,21 @@ coments: true
 
 Rails bé amb un grup important de generadors de codi.
 
-    rails new blog
-
+```ruby
+rails new blog
+```
 Per defecte es crea una base de dades a `sqlite`, en cas que vullguem vincular aquesta base de dades a altre servei de base de dades ho farem així:
 
-    rails new projecte --database=postgres
-    rails new projecte -d=postgres
+```ruby
+rails new projecte --database=postgres
+rails new projecte -d=postgres
+```
 
 Podem crear una base de dades per defecte així:
 
-    rails db:drop db:create db:migrate
-
+```ruby
+rails db:drop db:create db:migrate
+```
 Explicació:
 
 - `drop`: elimina la base de dades que hi havia.
@@ -28,25 +32,33 @@ Explicació:
 
 Crea diferents arxius i instal·la gemes necessàries.
 
-    rails server
-    rails s
+```ruby
+rails server
+rails s
+```
 
 Arranca un server que porta el mateix framework.
 
-    localhost:3000
-
+```ruby
+localhost:3000
+```
 Tancar el server
 
-    Ctrl + c
+```ruby
+Ctrl + c
+```
 
 Generem un controlador anomenat `welcome` que va a tenir un mètode anomenat `index`.
 
-    rails generate controller welcome index
+```ruby
+rails generate controller welcome index
+```
 
 O bé:
 
-	rails g controller welcome index
-	
+```ruby
+rails g controller welcome index
+```	
 
 Ens dirigim a la carpeta `app/controlers/`, a l'arxiu `welcome_controler.rb`:
 
@@ -100,30 +112,31 @@ rails new blog
 2. Ens situem al directori
 
 ```ruby
-	cd blog
+cd blog
 ```
 
 3. Crear un compte per als contactes
 
 ```ruby
-	rails g scaffold contacte Nom:string Cognom: string Telèfon: string dataentrada:date
+rails g scaffold contacte Nom:string Cognom: string Telèfon: string dataentrada:date
 ```
 
 4. Migrem la base de dades
 
 ```ruby
-	rails db:migrate
+rails db:migrate
 ```
+
 5. Llancem el servidor
 
 ```ruby
-	rails s
+rails s
 ```
 
 6. Cridem el servidor des del navegador
 
 ```ruby
-	localhost:3000/contactes
+localhost:3000/contactes
 ```
 
 Font: [Wikipedia.es](https://es.wikipedia.org/wiki/Ruby_on_Rails)
